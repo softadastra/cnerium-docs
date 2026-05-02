@@ -1,0 +1,31 @@
+{
+  "name": "cnerium-docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Documentation website for Cnerium, the fast minimalist web framework for Vix.",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview .",
+    "deploy": "npm run build && node scripts/deploy.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cnerium/docs.git"
+  },
+  "keywords": [
+    "cnerium",
+    "vix",
+    "cpp",
+    "web-framework",
+    "vitepress",
+    "documentation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.33"
+  }
+}
