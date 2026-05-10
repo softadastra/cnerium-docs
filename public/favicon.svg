@@ -1,0 +1,135 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="800"
+  height="800"
+  viewBox="0 0 800 800"
+  fill="none"
+>
+  <defs>
+    <linearGradient id="cneriumGradient" x1="180" y1="140" x2="640" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D8FF62"/>
+      <stop offset="42%" stop-color="#38F06A"/>
+      <stop offset="72%" stop-color="#12D98A"/>
+      <stop offset="100%" stop-color="#56F3FF"/>
+    </linearGradient>
+
+    <linearGradient id="cneriumDark" x1="220" y1="180" x2="620" y2="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#173C22"/>
+      <stop offset="45%" stop-color="#0F7A32"/>
+      <stop offset="100%" stop-color="#0A3B3D"/>
+    </linearGradient>
+
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="
+          0 0 0 0 0.22
+          0 0 0 0 0.98
+          0 0 0 0 0.68
+          0 0 0 0.95 0"
+        result="glowColor"
+      />
+      <feMerge>
+        <feMergeNode in="glowColor"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <!-- C shape -->
+    <path
+      d="
+        M490 150
+        H350
+        C234 150 140 244 140 360
+        V440
+        C140 556 234 650 350 650
+        H482
+        L548 578
+        H352
+        C276 578 214 516 214 440
+        V360
+        C214 284 276 222 352 222
+        H424
+        L490 150
+        Z
+      "
+      fill="url(#cneriumDark)"
+      stroke="url(#cneriumGradient)"
+      stroke-width="8"
+      stroke-linejoin="round"
+    />
+
+    <!-- N shape -->
+    <path
+      d="
+        M360 300
+        H442
+        L560 454
+        L654 318
+        H726
+        L584 523
+        V650
+        H518
+        V545
+        L360 300
+        Z
+      "
+      fill="url(#cneriumDark)"
+      stroke="url(#cneriumGradient)"
+      stroke-width="8"
+      stroke-linejoin="round"
+    />
+
+    <!-- vertical right leg accent -->
+    <path
+      d="M584 523 V650"
+      stroke="url(#cneriumGradient)"
+      stroke-width="8"
+      stroke-linecap="round"
+    />
+
+    <!-- inner cyan arc accent -->
+    <path
+      d="M250 395 C250 315 314 250 394 250"
+      stroke="#35F6F2"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.8"
+      filter="url(#softGlow)"
+    />
+
+    <path
+      d="M270 395 C270 327 326 270 394 270"
+      stroke="#37FF7A"
+      stroke-width="3"
+      stroke-linecap="round"
+      opacity="0.7"
+      filter="url(#softGlow)"
+    />
+
+    <!-- center light streak -->
+    <path
+      d="M248 518 H500"
+      stroke="#39FF77"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.7"
+      filter="url(#softGlow)"
+    />
+
+    <!-- small highlight -->
+    <circle cx="498" cy="518" r="8" fill="#C8FF44" filter="url(#softGlow)"/>
+  </g>
+</svg>

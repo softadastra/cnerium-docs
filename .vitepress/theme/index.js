@@ -1,5 +1,6 @@
 import DefaultTheme from "vitepress/theme";
 import "./custom.css";
+import "./style.css";
 
 import Layout from "./Layout.vue";
 import DocsHomeHero from "./DocsHomeHero.vue";

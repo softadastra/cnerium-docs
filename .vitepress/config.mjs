@@ -3,9 +3,9 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   lang: "en-US",
 
-  title: "Vix.cpp Documentation",
+  title: "Cnerium Documentation",
   description:
-    "Learn how to build fast and reliable C++ applications with Vix.cpp.",
+    "Build fast, simple, and reliable C++ web applications with Cnerium.",
 
   base: "/",
 
@@ -17,32 +17,8 @@ export default defineConfig({
   },
 
   head: [
-    ["link", { rel: "icon", href: "/assets/pwa/favicon.ico" }],
-    [
-      "link",
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "16x16",
-        href: "/assets/pwa/favicon-16x16.png",
-      },
-    ],
-    [
-      "link",
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "32x32",
-        href: "/assets/pwa/favicon-32x32.png",
-      },
-    ],
-    [
-      "link",
-      {
-        rel: "apple-touch-icon",
-        href: "/assets/pwa/apple-touch-icon.png",
-      },
-    ],
+    ["link", { rel: "icon", href: "/favicon.svg" }],
+    ["link", { rel: "apple-touch-icon", href: "/logo.svg" }],
 
     ["meta", { name: "theme-color", content: "#0b0e14" }],
     ["meta", { name: "mobile-web-app-capable", content: "yes" }],
@@ -51,32 +27,34 @@ export default defineConfig({
       "meta",
       {
         name: "apple-mobile-web-app-title",
-        content: "Vix.cpp Docs",
+        content: "Cnerium Docs",
       },
     ],
 
     ["meta", { property: "og:type", content: "website" }],
-    ["meta", { property: "og:title", content: "Vix.cpp Documentation" }],
+    ["meta", { property: "og:title", content: "Cnerium Documentation" }],
     [
       "meta",
       {
         property: "og:description",
         content:
-          "Learn how to build fast and reliable C++ applications with Vix.cpp.",
+          "Build fast, simple, and reliable C++ web applications with Cnerium.",
       },
     ],
-    ["meta", { property: "og:site_name", content: "Vix.cpp Documentation" }],
+    ["meta", { property: "og:site_name", content: "Cnerium Documentation" }],
+    ["meta", { property: "og:image", content: "/og-image.png" }],
 
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
-    ["meta", { name: "twitter:title", content: "Vix.cpp Documentation" }],
+    ["meta", { name: "twitter:title", content: "Cnerium Documentation" }],
     [
       "meta",
       {
         name: "twitter:description",
         content:
-          "Learn how to build fast and reliable C++ applications with Vix.cpp.",
+          "Build fast, simple, and reliable C++ web applications with Cnerium.",
       },
     ],
+    ["meta", { name: "twitter:image", content: "/og-image.png" }],
   ],
 
   vite: {
@@ -112,12 +90,28 @@ export default defineConfig({
   },
 
   themeConfig: {
-    siteTitle: "Vix.cpp",
-    logo: "/assets/pwa/icon-192.png",
+    siteTitle: "Cnerium",
+    logo: "/logo.svg",
 
     appearance: true,
 
     nav: [
+      {
+        text: "Guide",
+        link: "/guide/",
+      },
+      {
+        text: "Modules",
+        link: "/modules/",
+      },
+      {
+        text: "Examples",
+        link: "/examples/",
+      },
+      {
+        text: "Reference",
+        link: "/reference/",
+      },
       {
         text: "Registry",
         link: "https://registry.vixcpp.com/",
@@ -126,279 +120,134 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: "The Vix Book",
+        text: "Introduction",
         collapsed: false,
         items: [
           {
-            text: "Introduction",
-            link: "/book/01-introduction",
+            text: "Home",
+            link: "/",
           },
           {
-            text: "Why Vix Exists",
-            link: "/book/02-why-vix",
-          },
-          {
-            text: "Mental Model",
-            link: "/book/03-mental-model",
+            text: "What is Cnerium?",
+            link: "/what-is-cnerium",
           },
           {
             text: "Installation",
-            link: "/book/04-installation",
+            link: "/installation",
           },
           {
-            text: "Run Your First C++ File",
-            link: "/book/05-run-your-first-file",
+            text: "Quick Start",
+            link: "/quick-start",
           },
           {
-            text: "Create Your First Project",
-            link: "/book/06-create-your-first-project",
-          },
-          {
-            text: "Your First HTTP Server",
-            link: "/book/07-first-http-server",
-          },
-          {
-            text: "Routes",
-            link: "/book/08-routes",
-          },
-          {
-            text: "Request and Response",
-            link: "/book/09-request-response",
-          },
-          {
-            text: "Build a JSON API",
-            link: "/book/10-json-api",
-          },
-          {
-            text: "Middleware",
-            link: "/book/11-middleware",
-          },
-          {
-            text: "Validation",
-            link: "/book/12-validation",
-          },
-          {
-            text: "Errors and Logging",
-            link: "/book/13-errors-and-logging",
-          },
-          {
-            text: "Database",
-            link: "/book/14-database",
-          },
-          {
-            text: "Realtime WebSocket",
-            link: "/book/15-realtime-websocket",
-          },
-          {
-            text: "Async Runtime",
-            link: "/book/16-async-runtime",
-          },
-          {
-            text: "Cache",
-            link: "/book/17-cache",
-          },
-          {
-            text: "Offline-first Sync",
-            link: "/book/18-offline-first-sync",
-          },
-          {
-            text: "P2P",
-            link: "/book/19-p2p",
-          },
-          {
-            text: "Production Deployment",
-            link: "/book/20-production-deployment",
-          },
-          {
-            text: "Next Steps",
-            link: "/book/21-next-steps",
+            text: "First App",
+            link: "/first-app",
           },
         ],
       },
 
       {
-        text: "Guides",
-        items: [
-          { text: "Build a REST API", link: "/guides/build-rest-api" },
-          { text: "Validation", link: "/guides/validation" },
-          { text: "Authentication", link: "/guides/authentication" },
-          { text: "Sessions", link: "/guides/sessions" },
-          { text: "CORS", link: "/guides/cors" },
-          { text: "Rate limiting", link: "/guides/rate-limiting" },
-          { text: "SQLite API", link: "/guides/sqlite-api" },
-          { text: "MySQL API", link: "/guides/mysql-api" },
-          { text: "WebSocket chat", link: "/guides/websocket-chat" },
-          { text: "Static files", link: "/guides/static-files" },
-          { text: "Templates", link: "/guides/templates" },
-          {
-            text: "Production: Nginx + systemd",
-            link: "/guides/production-nginx-systemd",
-          },
-        ],
-      },
-
-      {
-        text: "CLI",
-        collapsed: true,
+        text: "Guide",
+        collapsed: false,
         items: [
           {
             text: "Overview",
-            link: "/cli/",
+            link: "/guide/",
           },
           {
-            text: "REPL",
-            link: "/cli/repl",
+            text: "Project Structure",
+            link: "/guide/project-structure",
           },
           {
-            text: "vix new",
-            link: "/cli/new",
+            text: "Routing",
+            link: "/guide/routing",
           },
           {
-            text: "vix make",
-            link: "/cli/make",
+            text: "Route Parameters",
+            link: "/guide/route-parameters",
           },
           {
-            text: "vix run",
-            link: "/cli/run",
+            text: "Request",
+            link: "/guide/request",
           },
           {
-            text: "vix dev",
-            link: "/cli/dev",
+            text: "Response",
+            link: "/guide/response",
           },
           {
-            text: "vix build",
-            link: "/cli/build",
+            text: "JSON",
+            link: "/guide/json",
           },
           {
-            text: "vix check",
-            link: "/cli/check",
+            text: "Middleware",
+            link: "/guide/middleware",
           },
           {
-            text: "vix tests",
-            link: "/cli/tests",
+            text: "Error Handling",
+            link: "/guide/error-handling",
           },
           {
-            text: "vix fmt",
-            link: "/cli/fmt",
+            text: "Not Found",
+            link: "/guide/not-found",
           },
           {
-            text: "vix clean",
-            link: "/cli/clean",
+            text: "Runtime",
+            link: "/guide/runtime",
           },
           {
-            text: "vix reset",
-            link: "/cli/reset",
+            text: "Configuration",
+            link: "/guide/configuration",
           },
           {
-            text: "vix replay",
-            link: "/cli/replay",
+            text: "Printing with vix::print",
+            link: "/guide/printing",
           },
           {
-            text: "vix task",
-            link: "/cli/task",
-          },
-          {
-            text: "Dependencies",
-            items: [
-              {
-                text: "vix add",
-                link: "/cli/add",
-              },
-              {
-                text: "vix install",
-                link: "/cli/install",
-              },
-              {
-                text: "vix update",
-                link: "/cli/update",
-              },
-              {
-                text: "vix outdated",
-                link: "/cli/outdated",
-              },
-              {
-                text: "vix remove",
-                link: "/cli/remove",
-              },
-              {
-                text: "vix list",
-                link: "/cli/list",
-              },
-            ],
-          },
-          {
-            text: "Packaging",
-            items: [
-              {
-                text: "vix pack",
-                link: "/cli/pack",
-              },
-              {
-                text: "vix verify",
-                link: "/cli/verify",
-              },
-              {
-                text: "vix cache",
-                link: "/cli/cache",
-              },
-              {
-                text: "vix publish",
-                link: "/cli/publish",
-              },
-            ],
-          },
-          {
-            text: "Advanced",
-            items: [
-              {
-                text: "vix registry",
-                link: "/cli/registry",
-              },
-              {
-                text: "vix store",
-                link: "/cli/store",
-              },
-              {
-                text: "vix orm",
-                link: "/cli/orm",
-              },
-              {
-                text: "vix p2p",
-                link: "/cli/p2p",
-              },
-            ],
-          },
-          {
-            text: "System",
-            items: [
-              {
-                text: "vix info",
-                link: "/cli/info",
-              },
-              {
-                text: "vix doctor",
-                link: "/cli/doctor",
-              },
-              {
-                text: "vix upgrade",
-                link: "/cli/upgrade",
-              },
-              {
-                text: "vix uninstall",
-                link: "/cli/uninstall",
-              },
-              {
-                text: "vix completion",
-                link: "/cli/completion",
-              },
-            ],
-          },
-          {
-            text: "All Commands",
-            link: "/cli/commands",
+            text: "Deployment",
+            link: "/guide/deployment",
           },
         ],
       },
+
+      {
+        text: "Modules",
+        collapsed: false,
+        items: [
+          {
+            text: "Overview",
+            link: "/modules/",
+          },
+          {
+            text: "JSON",
+            link: "/modules/json",
+          },
+          {
+            text: "HTTP",
+            link: "/modules/http",
+          },
+          {
+            text: "Router",
+            link: "/modules/router",
+          },
+          {
+            text: "Middleware",
+            link: "/modules/middleware",
+          },
+          {
+            text: "Server",
+            link: "/modules/server",
+          },
+          {
+            text: "Runtime",
+            link: "/modules/runtime",
+          },
+          {
+            text: "App",
+            link: "/modules/app",
+          },
+        ],
+      },
+
       {
         text: "Examples",
         collapsed: true,
@@ -408,8 +257,12 @@ export default defineConfig({
             link: "/examples/",
           },
           {
-            text: "Hello HTTP",
-            link: "/examples/hello-http",
+            text: "Hello World",
+            link: "/examples/hello-world",
+          },
+          {
+            text: "Basic Routes",
+            link: "/examples/basic-routes",
           },
           {
             text: "JSON API",
@@ -420,162 +273,51 @@ export default defineConfig({
             link: "/examples/middleware",
           },
           {
-            text: "Authentication",
-            link: "/examples/auth",
+            text: "Runtime Server",
+            link: "/examples/runtime-server",
           },
           {
-            text: "Database",
-            link: "/examples/database",
-          },
-          {
-            text: "WebSocket",
-            link: "/examples/websocket",
-          },
-          {
-            text: "Cache",
-            link: "/examples/cache",
-          },
-          {
-            text: "Sync",
-            link: "/examples/sync",
-          },
-          {
-            text: "P2P",
-            link: "/examples/p2p",
-          },
-          {
-            text: "Production App",
-            link: "/examples/production-app",
+            text: "REST API",
+            link: "/examples/rest-api",
           },
         ],
       },
 
       {
-        text: "API Reference",
+        text: "Reference",
         collapsed: true,
         items: [
           {
             text: "Overview",
-            link: "/api/index",
+            link: "/reference/",
           },
           {
-            text: "HTTP",
-            link: "/api/http",
+            text: "App",
+            link: "/reference/app",
           },
           {
-            text: "JSON",
-            link: "/api/json",
+            text: "AppContext",
+            link: "/reference/app-context",
           },
           {
-            text: "KV",
-            link: "/api/kv",
+            text: "AppConfig",
+            link: "/reference/app-config",
           },
           {
-            text: "ThreadPool",
-            link: "/api/threadpool",
+            text: "Server",
+            link: "/reference/server",
           },
           {
-            text: "Middleware",
-            link: "/api/middleware",
+            text: "Runtime",
+            link: "/reference/runtime",
           },
           {
-            text: "Config",
-            link: "/api/config",
+            text: "vix::print",
+            link: "/reference/vix-print",
           },
           {
-            text: "WebSocket",
-            link: "/api/websocket",
-          },
-          {
-            text: "Async",
-            link: "/api/async",
-          },
-          {
-            text: "P2P",
-            link: "/api/p2p",
-          },
-        ],
-      },
-
-      {
-        text: "ThreadPool",
-        collapsed: true,
-        items: [
-          {
-            text: "Overview",
-            link: "/threadpool/",
-          },
-          {
-            text: "Quick Start",
-            link: "/threadpool/quick-start",
-          },
-          {
-            text: "Installation",
-            link: "/threadpool/installation",
-          },
-          {
-            text: "Concepts",
-            link: "/threadpool/concepts",
-          },
-          {
-            text: "ThreadPool",
-            link: "/threadpool/thread-pool",
-          },
-          {
-            text: "Tasks",
-            link: "/threadpool/tasks",
-          },
-          {
-            text: "Futures",
-            link: "/threadpool/futures",
-          },
-          {
-            text: "Cancellation",
-            link: "/threadpool/cancellation",
-          },
-          {
-            text: "Timeouts",
-            link: "/threadpool/timeouts",
-          },
-          {
-            text: "Priorities",
-            link: "/threadpool/priorities",
-          },
-          {
-            text: "Task Groups",
-            link: "/threadpool/task-groups",
-          },
-          {
-            text: "Shutdown",
-            link: "/threadpool/shutdown",
-          },
-          {
-            text: "Metrics",
-            link: "/threadpool/metrics",
-          },
-          {
-            text: "Periodic Tasks",
-            link: "/threadpool/periodic-tasks",
-          },
-          {
-            text: "Parallel For",
-            link: "/threadpool/parallel-for",
-          },
-          {
-            text: "Parallel Map",
-            link: "/threadpool/parallel-map",
-          },
-          {
-            text: "Parallel Reduce",
-            link: "/threadpool/parallel-reduce",
-          },
-          {
-            text: "Best Practices",
-            link: "/threadpool/best-practices",
-          },
-          {
-            text: "API Reference",
-            link: "/threadpool/api-reference",
+            text: "vix::console",
+            link: "/reference/vix-console",
           },
         ],
       },
@@ -589,48 +331,8 @@ export default defineConfig({
             link: "/releases/",
           },
           {
-            text: "Builds",
-            link: "/releases/builds",
-          },
-          {
-            text: "Changelog",
-            link: "/releases/changelog",
-          },
-        ],
-      },
-
-      ,
-      {
-        text: "Internals",
-        collapsed: true,
-        items: [
-          {
-            text: "Architecture",
-            link: "/internals/architecture",
-          },
-          {
-            text: "Runtime Model",
-            link: "/internals/runtime-model",
-          },
-          {
-            text: "Direct Compile",
-            link: "/internals/direct-compile",
-          },
-          {
-            text: "Cache System",
-            link: "/internals/cache-system",
-          },
-          {
-            text: "Error Diagnostics",
-            link: "/internals/error-diagnostics",
-          },
-          {
-            text: "Performance",
-            link: "/internals/performance",
-          },
-          {
-            text: "Design Decisions",
-            link: "/internals/design-decisions",
+            text: "0.5.0",
+            link: "/releases/0.5.0",
           },
         ],
       },
@@ -651,11 +353,11 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/vixcpp/vix",
+        link: "https://github.com/cnerium/app",
       },
       {
         icon: "x",
-        link: "https://x.com/",
+        link: "https://x.com/softadastra",
       },
     ],
 
@@ -675,7 +377,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: "https://github.com/vixcpp/docs/edit/main/:path",
+      pattern: "https://github.com/cnerium/docs/edit/main/:path",
       text: "Edit this page on GitHub",
     },
 
@@ -686,7 +388,7 @@ export default defineConfig({
 
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2026 Vix.cpp",
+      copyright: "Copyright © 2026 Cnerium",
     },
   },
 });

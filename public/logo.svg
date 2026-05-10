@@ -1,0 +1,246 @@
+<svg
+  width="1200"
+  height="1200"
+  viewBox="0 0 1200 1200"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="42%" r="70%">
+      <stop offset="0%" stop-color="#0b3b35" />
+      <stop offset="45%" stop-color="#071d1f" />
+      <stop offset="100%" stop-color="#020607" />
+    </radialGradient>
+
+    <linearGradient id="greenC" x1="270" y1="240" x2="760" y2="780">
+      <stop offset="0%" stop-color="#d7ff5a" />
+      <stop offset="42%" stop-color="#31e85d" />
+      <stop offset="100%" stop-color="#00e0c6" />
+    </linearGradient>
+
+    <linearGradient id="greenDark" x1="300" y1="260" x2="760" y2="760">
+      <stop offset="0%" stop-color="#143b21" />
+      <stop offset="55%" stop-color="#0d7f30" />
+      <stop offset="100%" stop-color="#053d36" />
+    </linearGradient>
+
+    <linearGradient id="textGradient" x1="160" y1="900" x2="1040" y2="900">
+      <stop offset="0%" stop-color="#e6ff79" />
+      <stop offset="45%" stop-color="#59ff6a" />
+      <stop offset="100%" stop-color="#9ffcff" />
+    </linearGradient>
+
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="
+          0 0 0 0 0.20
+          0 0 0 0 1.00
+          0 0 0 0 0.45
+          0 0 0 0.85 0"
+        result="greenGlow"
+      />
+      <feMerge>
+        <feMergeNode in="greenGlow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="cyanGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="9" result="blur" />
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="
+          0 0 0 0 0.00
+          0 0 0 0 0.95
+          0 0 0 0 0.85
+          0 0 0 0.75 0"
+        result="cyanGlow"
+      />
+      <feMerge>
+        <feMergeNode in="cyanGlow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="textGlow" x="-20%" y="-60%" width="140%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="
+          0 0 0 0 0.35
+          0 0 0 0 1.00
+          0 0 0 0 0.55
+          0 0 0 0.8 0"
+      />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <clipPath id="symbolClip">
+      <rect x="180" y="160" width="840" height="680" rx="20" />
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="1200" fill="url(#bgGlow)" />
+
+  <g opacity="0.42">
+    <path d="M120 585H410" stroke="#00f0d2" stroke-width="1.2" />
+    <path d="M790 480H1080" stroke="#00f0d2" stroke-width="1.2" />
+    <path d="M170 670H345" stroke="#35ff72" stroke-width="1" />
+    <path d="M825 690H1025" stroke="#35ff72" stroke-width="1" />
+    <path d="M980 120V470" stroke="#00f0d2" stroke-width="0.8" opacity="0.45" />
+    <path d="M620 80V740" stroke="#00f0d2" stroke-width="0.8" opacity="0.35" />
+
+    <circle cx="120" cy="585" r="3" fill="#00f0d2" />
+    <circle cx="410" cy="585" r="3" fill="#00f0d2" />
+    <circle cx="790" cy="480" r="3" fill="#00f0d2" />
+    <circle cx="1080" cy="480" r="3" fill="#00f0d2" />
+    <circle cx="620" cy="585" r="3" fill="#35ff72" />
+  </g>
+
+  <g opacity="0.45" filter="url(#cyanGlow)">
+    <circle cx="500" cy="585" r="255" stroke="#00ffe0" stroke-width="1.2" />
+    <circle cx="500" cy="585" r="205" stroke="#00ffe0" stroke-width="1" opacity="0.65" />
+    <circle cx="500" cy="585" r="160" stroke="#35ff72" stroke-width="1" opacity="0.45" />
+    <path
+      d="M245 585C245 445 355 330 495 320"
+      stroke="#00ffe0"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-dasharray="52 24"
+    />
+    <path
+      d="M300 585C300 472 386 380 498 370"
+      stroke="#35ff72"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-dasharray="42 22"
+    />
+  </g>
+
+  <g clip-path="url(#symbolClip)">
+    <path
+      d="M705 255
+         H555
+         C425 255 320 360 320 490
+         V608
+         C320 738 425 842 555 842
+         H695
+         L770 760
+         H560
+         C480 760 416 696 416 616
+         V485
+         C416 405 480 340 560 340
+         H630
+         L705 255Z"
+      fill="url(#greenDark)"
+      opacity="0.92"
+    />
+
+    <path
+      d="M705 255
+         H555
+         C425 255 320 360 320 490
+         V608
+         C320 738 425 842 555 842
+         H695
+         L770 760
+         H560
+         C480 760 416 696 416 616
+         V485
+         C416 405 480 340 560 340
+         H630
+         L705 255Z"
+      stroke="url(#greenC)"
+      stroke-width="8"
+      stroke-linejoin="round"
+      filter="url(#softGlow)"
+    />
+
+    <path
+      d="M525 395
+         H610
+         L805 650
+         L940 455
+         H1020
+         L835 725
+         V842
+         H758
+         V710
+         L525 395Z"
+      fill="url(#greenDark)"
+      opacity="0.95"
+    />
+
+    <path
+      d="M525 395
+         H610
+         L805 650
+         L940 455
+         H1020
+         L835 725
+         V842
+         H758
+         V710
+         L525 395Z"
+      stroke="url(#greenC)"
+      stroke-width="8"
+      stroke-linejoin="round"
+      filter="url(#softGlow)"
+    />
+
+    <path
+      d="M395 590H710"
+      stroke="#00ffd0"
+      stroke-width="5"
+      stroke-linecap="round"
+      opacity="0.85"
+      filter="url(#cyanGlow)"
+    />
+
+    <path
+      d="M390 730H735"
+      stroke="#70ff3d"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.7"
+      filter="url(#softGlow)"
+    />
+
+    <circle cx="705" cy="730" r="9" fill="#baff35" filter="url(#softGlow)" />
+  </g>
+
+  <g opacity="0.5">
+    <path d="M190 960H1010" stroke="#00ffd0" stroke-width="1" opacity="0.35" />
+    <path d="M260 990H940" stroke="#35ff72" stroke-width="1" opacity="0.25" />
+  </g>
+
+  <text
+    x="600"
+    y="980"
+    text-anchor="middle"
+    font-family="Orbitron, Eurostile, Montserrat, Arial, sans-serif"
+    font-size="96"
+    font-weight="500"
+    letter-spacing="34"
+    fill="url(#textGradient)"
+    filter="url(#textGlow)"
+  >
+    CNERIUM
+  </text>
+
+  <path
+    d="M195 1010H1005"
+    stroke="#35ff72"
+    stroke-width="2"
+    opacity="0.25"
+    filter="url(#softGlow)"
+  />
+</svg>

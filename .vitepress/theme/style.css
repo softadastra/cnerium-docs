@@ -1,0 +1,1281 @@
+
+/* =========================
+   THEME TOKENS (LIGHT/DARK)
+   ========================= */
+
+/* LIGHT (quand html n'a PAS .dark) */
+html:not(.dark){
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #f6f7f9;
+  --vp-c-bg-alt: #eef0f3;
+
+  --vp-c-divider: rgba(0,0,0,.08);
+
+  --vp-c-text-1: rgba(0,0,0,.92);
+  --vp-c-text-2: rgba(0,0,0,.70);
+
+  /* Local tokens for the hero card */
+  --vix-card-bg: rgba(255,255,255,.92);
+  --vix-card-top-bg: rgba(245,246,248,.92);
+  --vix-card-border: rgba(0,0,0,.10);
+  --vix-card-divider: rgba(0,0,0,.08);
+  --vix-card-shadow: 0 18px 50px rgba(0,0,0,.10);
+
+  --vix-chip-bg: rgba(0,0,0,.04);
+  --vix-chip-border: rgba(0,0,0,.10);
+  --vix-chip-text: rgba(0,0,0,.78);
+
+  --vix-annot-line: rgba(0,0,0,.10);
+}
+
+html.dark{
+  --vp-c-bg: #14181b;
+  --vp-c-bg-soft: #1b2024;
+  --vp-c-bg-alt: #232a2f;
+
+  --vp-c-divider: rgba(255,255,255,.06);
+
+  --vp-c-text-1: rgba(255,255,255,.92);
+  --vp-c-text-2: rgba(255,255,255,.70);
+
+  --vix-card-bg: rgba(26,27,30,.92);
+  --vix-card-top-bg: rgba(37,38,43,.75);
+  --vix-card-border: rgba(255,255,255,.10);
+  --vix-card-divider: rgba(255,255,255,.08);
+  --vix-card-shadow: 0 22px 60px rgba(0,0,0,.40);
+
+  --vix-chip-bg: rgba(0,0,0,.22);
+  --vix-chip-border: rgba(255,255,255,.10);
+  --vix-chip-text: rgba(255,255,255,.92);
+
+  --vix-annot-line: rgba(255,255,255,.10);
+}
+
+
+.VPDoc,
+.VPContent,
+.VPNavBar,
+.VPFooter{
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+}
+
+/* =========================
+   DOCS HERO
+   ========================= */
+
+.vix-docs-hero{
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 44px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.vix-docs-h1{
+  font-size: 64px;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  margin: 0 0 18px;
+  color: var(--vp-c-text-1);
+}
+
+.vix-docs-lead{
+  color: var(--vp-c-text-2);
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 18px;
+  max-width: 52ch;
+}
+
+.vix-docs-body{
+  color: var(--vp-c-text-2);
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 0 0 18px;
+  max-width: 60ch;
+}
+
+/* CTA */
+.actions{
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+}
+
+.actions .primary{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px;
+
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+
+  background: #4f6fff;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 4px;
+}
+
+html:not(.dark) .actions .primary{
+  background: #c7d2fe;
+  color: #000000;
+}
+
+.actions .primary:hover{
+  background: #c7d2fe;
+  color: #000000;
+}
+
+.actions .primary .cta-arrow{
+  font-weight: 400;
+  opacity: .8;
+}
+
+
+/* Right panel */
+.vix-docs-hero__right{
+  position: relative;
+  padding-top: 18px;
+}
+
+/* Anchor stable */
+.vix-docs-hero__right{
+  position: relative;
+  padding-top: 18px;
+}
+
+.vix-hint{
+  position: absolute;
+
+  top: -14px;
+  left: 12px;
+
+  max-width: 38ch;
+
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 500;
+  font-style: italic;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    "Bradley Hand",
+    "Apple Chancery",
+    "Snell Roundhand",
+    cursive;
+
+  letter-spacing: .01em;
+
+  color: var(--vp-c-text-2);
+  opacity: .92;
+
+  pointer-events: none;
+}
+.vix-hint br{
+  content: "";
+}
+
+/* underline like a hand stroke */
+.vix-hint::after{
+  content: "";
+  display: block;
+
+  width: 56px;
+  height: 2px;
+
+  margin-top: 8px;
+  margin-left: 2px;
+
+  background: var(--vix-annot-line);
+  border-radius: 999px;
+
+  /* slight irregularity */
+  transform: rotate(-1deg);
+  opacity: .9;
+}
+
+.vix-docs-hero__right .vix-hint + *{
+  margin-top: 22px;
+}
+
+/* =========================
+   HERO CODE BLOCK (CARD)
+   ========================= */
+
+.vix-hero-code{
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--vix-card-border);
+  background: var(--vix-card-bg);
+  box-shadow: var(--vix-card-shadow);
+  margin-top: 16px;
+}
+
+.vix-hero-code__top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--vix-card-top-bg);
+  border-bottom: 1px solid var(--vix-card-divider);
+}
+
+.vix-hero-code__pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--vix-chip-text);
+  background: var(--vix-chip-bg);
+  border: 1px solid var(--vix-chip-border);
+}
+
+.vix-hero-code__copy{
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 6px 10px;
+  border: 1px solid var(--vix-chip-border);
+  background: var(--vix-chip-bg);
+  color: var(--vix-chip-text);
+  cursor: pointer;
+  transition: transform .08s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
+}
+
+.vix-hero-code__copy:hover{
+  transform: translateY(-1px);
+  opacity: .95;
+}
+
+.vix-hero-code__body{
+  padding: 14px 16px 16px;
+}
+
+.vix-hero-code__body pre{
+  margin: 0;
+  background: transparent;
+}
+
+.vix-hero-code__body code{
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 960px){
+  .vix-docs-hero{
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .vix-docs-h1{
+    font-size: 44px;
+  }
+
+  .vix-docs-hero__right{
+    padding-top: 10px;
+  }
+
+  .vix-hint{
+    position: static;
+    margin: 0 0 10px;
+    max-width: 52ch;
+  }
+  .vix-hint::after{
+    width: 44px;
+  }
+  .vix-docs-hero__right .vix-hint + *{
+    margin-top: 0;
+  }
+}
+
+/* =========================
+   HERO FEATURE CARDS
+   same page background, border only
+   no link styling inside
+   ========================= */
+
+.vix-hero-cards{
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* card = transparent, only border */
+.vix-hero-card{
+  display: block;
+  padding: 18px 18px 16px;
+  border-radius: 16px;
+
+  background: transparent;
+  border: 1px solid var(--vp-c-divider);
+
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+
+  transition: transform .14s ease, border-color .14s ease;
+}
+
+/* IMPORTANT: neutralize VitePress link styles inside */
+.vix-hero-card:where(a),
+.vix-hero-card :where(a){
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* also remove any underline from nested elements */
+.vix-hero-card :where(*){
+  text-decoration: none;
+}
+
+/* hover = only border + tiny lift (no background change) */
+.vix-hero-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(79,111,255,.45);
+}
+
+/* focus */
+.vix-hero-card:focus-visible{
+  outline: none;
+  border-color: rgba(79,111,255,.65);
+  box-shadow: 0 0 0 3px rgba(79,111,255,.30);
+}
+
+/* icon = uses divider border, inherits text color */
+.vix-hero-card__icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+
+  background: transparent;
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+}
+
+.vix-hero-card__icon svg{
+  width: 18px;
+  height: 18px;
+}
+
+/* title/desc use same tokens as page text */
+.vix-hero-card__title{
+  margin: 0 0 6px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--vp-c-text-1);
+}
+
+.vix-hero-card__desc{
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+}
+
+.vix-hero-card{
+  position: relative;
+}
+
+/* top row: icon left, arrow right */
+.vix-hero-card__top{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+/* arrow hidden by default */
+.vix-hero-card__arrow{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--vp-c-divider);
+  background: transparent;
+  color: var(--vp-c-text-2);
+
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .14s ease, transform .14s ease, border-color .14s ease;
+}
+
+.vix-hero-card__arrow svg{
+  width: 18px;
+  height: 18px;
+}
+
+/* hover: arrow appears and slides to the right */
+.vix-hero-card:hover .vix-hero-card__arrow{
+  opacity: 1;
+  transform: translateX(0);
+  border-color: rgba(79,111,255,.45);
+}
+
+/* also make icon border react subtly */
+.vix-hero-card:hover .vix-hero-card__icon{
+  border-color: rgba(79,111,255,.35);
+}
+
+
+/* Responsive */
+@media (max-width: 1100px){
+  .vix-hero-cards{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px){
+  .vix-hero-cards{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* =========================
+   SIDEBAR = SAME BACKGROUND AS PAGE
+   ========================= */
+.VPSidebar,
+.VPSidebar .curtain,
+.VPSidebar .content,
+.VPSidebar .nav{
+  background: var(--vp-c-bg) !important;
+}
+/* =========================
+   FOOTER BAR
+   ========================= */
+.vix-footerbar{
+  height: 56px;
+  display: flex;
+  align-items: center;
+  background: var(--vp-c-bg);
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.vix-footerbar__inner{
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 18px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.vix-footerbar__brand{
+  color: rgba(255,255,255,.92);
+  font-weight: 600;
+}
+
+.vix-footerbar__nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.vix-footerbar__link{
+  color: rgba(255,255,255,.88);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.vix-footerbar__link:hover{
+  color: #ffffff;
+}
+
+.vix-footerbar__social{
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.vix-footerbar__icon{
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,.70);
+  text-decoration: none;
+}
+
+.vix-footerbar__icon:hover{
+  color: rgba(255,255,255,.95);
+}
+
+@media (max-width: 820px){
+  .vix-footerbar__inner{
+    grid-template-columns: 1fr 1fr;
+  }
+  .vix-footerbar__nav{
+    display: none;
+  }
+}
+
+/* =========================
+   DISABLE VITEPRESS FOOTER
+   ========================= */
+.VPFooter{
+  display: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+.VPNavBar{
+  background: var(--vp-c-bg) !important;
+}
+
+/* =========================
+   RESPONSIVE (single block)
+   ========================= */
+
+@media (max-width: 960px){
+  /* HERO layout */
+  .vix-docs-hero{
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 18px;
+  }
+
+  .vix-docs-h1{
+    font-size: 44px;
+    line-height: 1.08;
+  }
+
+  .vix-docs-lead{
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .vix-docs-body{
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .actions{
+    margin-top: 14px;
+  }
+
+  .actions .primary{
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  /* Right panel + hint */
+  .vix-docs-hero__right{
+    padding-top: 10px;
+  }
+
+  .vix-hint{
+    position: static;
+    margin: 0 0 10px;
+    max-width: 52ch;
+  }
+
+  .vix-hint::after{
+    width: 44px;
+  }
+
+  .vix-docs-hero__right .vix-hint + *{
+    margin-top: 0;
+  }
+
+  /* Code block sizing */
+  .vix-hero-code{
+    border-radius: 10px;
+  }
+
+  .vix-hero-code__top{
+    padding: 8px 10px;
+  }
+
+  .vix-hero-code__body{
+    padding: 12px;
+  }
+
+  .vix-hero-code__body code{
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  /* Feature cards */
+  .vix-hero-cards{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .vix-hero-card{
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .vix-hero-card__title{
+    font-size: 15px;
+  }
+
+  .vix-hero-card__desc{
+    font-size: 13px;
+  }
+
+  /* Footer */
+  .vix-footerbar{
+    height: 52px;
+  }
+
+  .vix-footerbar__inner{
+    padding: 0 14px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vix-footerbar__nav{
+    display: none;
+  }
+
+  .vix-footerbar__brand{
+    font-size: 14px;
+  }
+
+  .vix-footerbar__icon{
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Prevent mobile horizontal scroll */
+  html, body,
+  .VPContent{
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 560px){
+  /* Cards go single column */
+  .vix-hero-cards{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .vix-docs-h1{
+    font-size: 34px;
+    line-height: 1.1;
+  }
+}
+/* =========================
+   GLOBAL CONTENT WIDTH
+   ========================= */
+/* VitePress: doc container adds big side padding on desktop */
+.vp-doc-container,
+.VPDoc .container,
+.VPDoc .content-container{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure our main container owns horizontal spacing */
+.container{
+  max-width: 1120px !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(12px, 2.5vw, 18px) !important;
+  padding-right: clamp(12px, 2.5vw, 18px) !important;
+}
+
+
+/* =========================
+   EXTRA SMALL DEVICES (≤ 400px)
+   ========================= */
+
+@media (max-width: 400px){
+
+  /* Global safety */
+  html, body,
+  .VPContent{
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .vix-docs-hero{
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .vix-docs-h1{
+    font-size: 28px;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  .vix-docs-lead{
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .vix-docs-body{
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  /* CTA */
+  .actions{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .actions .primary{
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* Hint */
+  .vix-hint{
+    font-size: 13px;
+    max-width: 100%;
+  }
+
+  .vix-hint::after{
+    width: 36px;
+  }
+
+  /* CODE BLOCK */
+  .vix-hero-code{
+    border-radius: 8px;
+  }
+
+  .vix-hero-code__top{
+    padding: 6px 8px;
+  }
+
+  .vix-hero-code__pill{
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .vix-hero-code__copy{
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .vix-hero-code__body{
+    padding: 10px;
+  }
+
+  .vix-hero-code__body code{
+    font-size: 11.5px;
+    line-height: 1.6;
+  }
+
+  /* FEATURE CARDS */
+  .vix-hero-cards{
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .vix-hero-card{
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .vix-hero-card__icon{
+    width: 30px;
+    height: 30px;
+  }
+
+  .vix-hero-card__title{
+    font-size: 14px;
+  }
+
+  .vix-hero-card__desc{
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  /* FOOTER */
+  .vix-footerbar{
+    height: 44px;
+  }
+
+  .vix-footerbar__inner{
+    padding: 0 12px;
+  }
+
+  .vix-footerbar__brand{
+    font-size: 13px;
+  }
+
+  .vix-footerbar__icon{
+    width: 24px;
+    height: 24px;
+  }
+}
+/* =========================
+   EXTRA SMALL FIX (≤ 400px)
+   ========================= */
+@media (max-width: 400px){
+
+  /* HARD STOP overflow */
+  html, body,
+  .VPApp,
+  .VPContent,
+  .VPDoc{
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* VitePress container padding fix */
+  .VPContent{
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  /* HERO layout */
+  .vix-docs-hero{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 12px;
+    max-width: 100%;
+  }
+
+  .vix-docs-hero__left,
+  .vix-docs-hero__right{
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* Titles */
+  .vix-docs-h1{
+    font-size: 28px;
+    line-height: 1.12;
+  }
+
+  /* CTA full width */
+  .actions{
+    flex-direction: column;
+  }
+  .actions .primary{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* CODE BLOCK CONSTRAINT */
+  .vix-hero-code{
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .vix-hero-code__body{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vix-hero-code__body pre{
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .vix-hero-code__body code{
+    font-size: 11.5px;
+    line-height: 1.6;
+    white-space: pre;
+  }
+
+  /* Hint becomes inline */
+  .vix-hint{
+    position: static;
+    margin-bottom: 8px;
+    max-width: 100%;
+  }
+
+  .vix-hint::after{
+    width: 32px;
+  }
+}
+/* =========================
+   EXTRA SMALL PADDING FIX
+   ========================= */
+@media (max-width: 400px){
+
+  /* Reduce global horizontal padding */
+  .VPContent,
+  .VPDoc,
+  .VPDoc.has-aside{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* Also tighten hero internal spacing */
+  .vix-docs-hero{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Cards align better on small screens */
+  .vix-hero-card{
+    padding: 14px;
+  }
+
+  /* Footer inner spacing */
+  .vix-footerbar__inner{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+/* =========================
+   CONTAINER PADDING (SMALL)
+   ========================= */
+
+/* Phones */
+@media (max-width: 640px){
+  .container{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Small phones (≤ 400px) */
+@media (max-width: 400px){
+  .container{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+@media (max-width: 360px){
+  .container{
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+/* =========================
+   DOCS HEADER + SIDEBAR TEXT ONLY
+   + Sidebar scrollbar
+   (no boxes, no shadows, no outlines)
+   ========================= */
+
+/* -------- Header (navbar) text sizing -------- */
+.VPNavBar{
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+}
+
+/* Site title */
+.VPNavBarTitle .title{
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* Top nav links */
+.VPNavBarMenuLink,
+.VPNavBarMenuLink > a{
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* Search button text */
+.VPNavBarSearch .DocSearch-Button,
+.VPNavBarSearch .VPNavBarSearchButton{
+  font-size: 13px;
+}
+
+/* -------- Sidebar text sizing -------- */
+
+/* Section/group titles in sidebar */
+.VPSidebarGroup .title{
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Sidebar links */
+.VPSidebarItem .link{
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.35;
+}
+
+/* Deeper levels slightly smaller */
+.VPSidebarItem.level-2 .link{ font-size: 12.8px; }
+.VPSidebarItem.level-3 .link{ font-size: 12.6px; }
+.VPSidebarItem.level-4 .link{ font-size: 12.4px; }
+
+/* Active item only via font weight (no box) */
+.VPSidebarItem.is-active .link{
+  font-weight: 800;
+}
+
+/* -------- Sidebar scrollbar styling -------- */
+
+/* Firefox */
+.VPSidebar .nav{
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+
+/* Chromium / WebKit */
+.VPSidebar .nav::-webkit-scrollbar{
+  width: 10px;
+}
+.VPSidebar .nav::-webkit-scrollbar-track{
+  background: transparent;
+}
+.VPSidebar .nav::-webkit-scrollbar-thumb{
+  background: var(--vp-c-divider);
+  border-radius: 999px;
+
+  /* makes the thumb look slimmer without a box effect */
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+.VPSidebar .nav::-webkit-scrollbar-thumb:hover{
+  border-width: 2px;
+}
+
+/* -------- Mobile tighter -------- */
+@media (max-width: 960px){
+  .VPNavBarTitle .title{ font-size: 13.5px; }
+  .VPNavBarMenuLink,
+  .VPNavBarMenuLink > a{ font-size: 12.8px; }
+
+  .VPSidebarItem .link{ font-size: 12.8px; }
+}
+
+/* =========================
+   SEARCH BAR + SEARCH POPUP (VitePress local search)
+   no color changes, only layout/typography/borders
+   ========================= */
+
+/* Search button in header (local search) */
+.VPNavBarSearch .VPNavBarSearchButton,
+.VPNavBarSearch .DocSearch-Button{
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* Hide "Search" label if you prefer icon-only, keep shortcut visible */
+/*
+.VPNavBarSearch .VPNavBarSearchButton span:first-child,
+.VPNavBarSearch .DocSearch-Button span:first-child{
+  display: none;
+}
+*/
+
+/* Make the shortcut chip smaller */
+.VPNavBarSearch .DocSearch-Button-Keys,
+.VPNavBarSearch kbd{
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+
+/* Input inside popup */
+.VPLocalSearchBox input,
+.VPDocSearch input{
+  height: 42px;
+  border-radius: 12px;
+
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+/* Popup container */
+.VPLocalSearchBox,
+.VPDocSearch,
+.VPNavBarSearch .DocSearch-Modal{
+  border-radius: 14px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* Popup header spacing */
+.VPLocalSearchBox .header,
+.VPNavBarSearch .DocSearch-SearchBar{
+  padding: 12px 12px 10px;
+}
+
+/* Results list */
+.VPLocalSearchBox .results,
+.VPNavBarSearch .DocSearch-Dropdown{
+  padding: 8px 8px 10px;
+}
+
+/* Result item typography only (no boxes) */
+.VPLocalSearchBox .result,
+.VPNavBarSearch .DocSearch-Hit{
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+
+/* Title and excerpt sizes */
+.VPLocalSearchBox .result .title,
+.VPNavBarSearch .DocSearch-Hit-title{
+  font-size: 13.5px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  color: var(--vp-c-text-1);
+}
+
+.VPLocalSearchBox .result .excerpt,
+.VPNavBarSearch .DocSearch-Hit-path{
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--vp-c-text-2);
+}
+
+/* Divider between groups if present */
+.VPLocalSearchBox .divider,
+.VPNavBarSearch .DocSearch-Dropdown-Container{
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+/* Popup scrollbar (results area) */
+.VPLocalSearchBox .results,
+.VPNavBarSearch .DocSearch-Dropdown{
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+
+.VPLocalSearchBox .results::-webkit-scrollbar,
+.VPNavBarSearch .DocSearch-Dropdown::-webkit-scrollbar{
+  width: 10px;
+}
+.VPLocalSearchBox .results::-webkit-scrollbar-track,
+.VPNavBarSearch .DocSearch-Dropdown::-webkit-scrollbar-track{
+  background: transparent;
+}
+.VPLocalSearchBox .results::-webkit-scrollbar-thumb,
+.VPNavBarSearch .DocSearch-Dropdown::-webkit-scrollbar-thumb{
+  background: var(--vp-c-divider);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+.VPLocalSearchBox .results::-webkit-scrollbar-thumb:hover,
+.VPNavBarSearch .DocSearch-Dropdown::-webkit-scrollbar-thumb:hover{
+  border-width: 2px;
+}
+
+/* Mobile sizing */
+@media (max-width: 960px){
+  .VPNavBarSearch .VPNavBarSearchButton,
+  .VPNavBarSearch .DocSearch-Button{
+    height: 32px;
+    font-size: 12.8px;
+  }
+
+  .VPLocalSearchBox input,
+  .VPDocSearch input{
+    height: 40px;
+    font-size: 13.5px;
+  }
+}
+/* =========================
+   REMOVE SEARCH DARK OVERLAY
+   ========================= */
+
+/* Local search overlay */
+.VPLocalSearchBox .backdrop,
+.VPLocalSearchBox .overlay,
+.VPNavBarSearch .backdrop,
+.VPNavBarSearch .overlay,
+.VPNavBarSearch .DocSearch-Overlay {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Si VitePress utilise VPBackdrop */
+.VPBackdrop {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+/* =========================
+   FIX: SEARCH SHOULD NOT HIDE THE SITE
+   wrapper transparent, panel only has background
+   ========================= */
+
+/* Full-screen wrapper must be transparent */
+.VPLocalSearchBox,
+.VPDocSearch,
+.VPNavBarSearch .DocSearch-Modal{
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Keep the actual panel styled (try multiple selectors for VitePress versions) */
+.VPLocalSearchBox :where(.box, .modal, .dialog, .panel, .container),
+.VPNavBarSearch .DocSearch-Modal :where(.DocSearch-Modal-Container, .DocSearch-Container){
+  background: var(--vp-c-bg) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 14px !important;
+}
+
+/* Keep overlay transparent (your previous rule is ok, we keep it stronger) */
+.VPBackdrop,
+.VPNavBarSearch .DocSearch-Overlay,
+.VPLocalSearchBox .backdrop,
+.VPLocalSearchBox .overlay{
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+/* =========================
+   LAYOUT FIX
+   ========================= */
+
+/* App takes full viewport height */
+html, body,
+#app,
+.VPApp{
+  min-height: 100vh;
+}
+
+/* Main VitePress layout = flex column */
+.VPApp{
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content area grows */
+.VPContent{
+  flex: 1 0 auto;
+}
+
+/* Footer stays at bottom */
+.vix-footerbar{
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
