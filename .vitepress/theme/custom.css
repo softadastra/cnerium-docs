@@ -1,0 +1,571 @@
+/* ============================================================
+   Vix.cpp Docs — custom.css
+   - Garde la couleur de fond VitePress
+   - Améliore typo, sidebar, codeblocks, mobile
+   ============================================================ */
+
+/* ── Tokens ── */
+:root {
+  --vix-accent:   #22c55e;
+  --vix-accent-d: #16a34a;
+  --vix-accent-s: rgba(34, 197, 94, .12);
+  --vix-accent-b: rgba(34, 197, 94, .25);
+}
+
+/* Light */
+html:not(.dark) {
+  --vp-c-bg:      #ffffff;
+  --vp-c-bg-soft: #f6f7f9;
+  --vp-c-bg-alt:  #eef0f3;
+  --vp-c-divider: rgba(0, 0, 0, .08);
+  --vp-c-text-1:  rgba(0, 0, 0, .92);
+  --vp-c-text-2:  rgba(0, 0, 0, .62);
+  --vp-c-brand-1: #16a34a;
+  --vp-c-brand-2: #22c55e;
+  --vp-c-brand-3: #4ade80;
+}
+
+/* Dark */
+html.dark {
+  --vp-c-bg:      #0d1117;
+  --vp-c-bg-soft: #161b22;
+  --vp-c-bg-alt:  #1c2128;
+  --vp-c-divider: rgba(255, 255, 255, .08);
+  --vp-c-text-1:  rgba(255, 255, 255, .92);
+  --vp-c-text-2:  rgba(255, 255, 255, .62);
+  --vp-c-brand-1: #22c55e;
+  --vp-c-brand-2: #4ade80;
+  --vp-c-brand-3: #86efac;
+}
+
+/* ── App / Layout ── */
+html, body, #app, .VPApp { min-height: 100vh; }
+.VPApp { display: flex; flex-direction: column; }
+.VPContent { flex: 1 0 auto; }
+html, body { overflow-x: hidden; }
+
+/* ── Navbar ── */
+.VPNavBar {
+  background: var(--vp-c-bg) !important;
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.VPNavBarTitle .title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--vp-c-text-1);
+}
+
+.VPNavBarMenuLink,
+.VPNavBarMenuLink > a {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Brand logo color in navbar */
+.VPNavBarTitle .VPImage { border-radius: 8px; }
+
+/* ── Sidebar ── */
+.VPSidebar {
+  background: var(--vp-c-bg) !important;
+}
+
+.VPSidebar .curtain,
+.VPSidebar .content,
+.VPSidebar .nav {
+  background: var(--vp-c-bg) !important;
+}
+
+/* ── SIDEBAR STICKY ON MOBILE ── */
+/* On mobile, VitePress uses a drawer. We make the header sticky
+   so sidebar toggle is always reachable when scrolling */
+
+@media (max-width: 960px) {
+  /* Le header principal Vix.cpp ne doit pas être sticky */
+  .VPNavBar {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  /* Pas besoin de pousser le contenu */
+  .VPContent {
+    padding-top: 0 !important;
+  }
+
+  /* Le deuxième header mobile doit rester visible au scroll */
+  .VPLocalNav {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99 !important;
+    background: var(--vp-c-bg) !important;
+    border-top: 1px solid var(--vp-c-divider) !important;
+    border-bottom: 1px solid var(--vp-c-divider) !important;
+  }
+
+  /* Le contenu du local nav doit aussi garder le fond */
+  .VPLocalNav .container,
+  .VPLocalNav .items {
+    background: var(--vp-c-bg) !important;
+  }
+
+  /* Sidebar drawer mobile */
+  .VPSidebar {
+    z-index: 100 !important;
+    background: var(--vp-c-bg) !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .VPDoc,
+  .VPDoc .container,
+  .VPDoc .content,
+  .VPDoc .content-container {
+    overflow: visible !important;
+  }
+}
+
+/* ── Sidebar text ── */
+.VPSidebarGroup .title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2);
+}
+
+.VPSidebarItem .link {
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.4;
+  border-radius: 7px;
+  transition: background .12s, color .12s;
+}
+.VPSidebarItem .link:hover {
+  background: var(--vix-accent-s);
+  color: var(--vix-accent);
+}
+
+.VPSidebarItem.is-active > .item > .link,
+.VPSidebarItem.is-active > .item .link {
+  color: var(--vix-accent) !important;
+  font-weight: 700 !important;
+  background: var(--vix-accent-s);
+}
+
+/* Sidebar scrollbar */
+.VPSidebar .nav {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+.VPSidebar .nav::-webkit-scrollbar { width: 6px; }
+.VPSidebar .nav::-webkit-scrollbar-track { background: transparent; }
+.VPSidebar .nav::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider); border-radius: 999px;
+}
+
+/* ── Doc content ── */
+.VPDoc .vp-doc {
+  max-width: 740px;
+}
+
+/* Headings */
+.vp-doc h1 {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.vp-doc h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+
+.vp-doc h3 { font-size: 1.05rem; font-weight: 800; }
+
+/* Paragraphs */
+.vp-doc p { line-height: 1.75; font-size: 15px; }
+
+/* Inline code */
+.vp-doc :not(pre) > code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: .82em;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* Code blocks (VitePress native shiki) */
+.vp-doc div[class*="language-"],
+.vp-doc [class*="language-"] {
+  border-radius: 12px !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  overflow: hidden;
+  margin: 18px 0 !important;
+}
+
+.vp-doc div[class*="language-"] pre,
+.vp-doc [class*="language-"] pre {
+  padding: 14px 16px !important;
+  font-size: .875rem !important;
+  line-height: 1.7 !important;
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+  background: #0d1117 !important;
+  margin: 0 !important;
+  overflow-x: auto;
+}
+
+html:not(.dark) .vp-doc div[class*="language-"] pre,
+html:not(.dark) .vp-doc [class*="language-"] pre {
+  background: #1a1e26 !important;
+}
+
+/* Language label */
+.vp-doc div[class*="language-"] .lang {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  color: rgba(255,255,255,.35);
+  top: 10px; right: 12px;
+}
+
+/* Copy button on native code blocks */
+.vp-doc div[class*="language-"] button.copy {
+  top: 8px; right: 8px;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  transition: background .12s;
+}
+.vp-doc div[class*="language-"] button.copy:hover {
+  background: rgba(34,197,94,.14);
+  border-color: rgba(34,197,94,.28);
+}
+
+/* Scrollbar on code blocks */
+.vp-doc pre::-webkit-scrollbar { height: 6px; }
+.vp-doc pre::-webkit-scrollbar-thumb { background: rgba(34,197,94,.28); border-radius: 999px; }
+.vp-doc pre::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Tables ── */
+.vp-doc table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13.5px; margin: 18px 0;
+  display: block; overflow-x: auto;
+}
+.vp-doc th {
+  padding: 9px 12px; border-bottom: 2px solid var(--vp-c-divider);
+  font-weight: 800; font-size: 12px; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--vp-c-text-2);
+  text-align: left;
+}
+.vp-doc td {
+  padding: 9px 12px; border-bottom: 1px solid var(--vp-c-divider);
+  vertical-align: top; line-height: 1.6;
+}
+.vp-doc tr:last-child td { border-bottom: 0; }
+
+/* ── Blockquotes ── */
+.vp-doc blockquote {
+  border-left: 3px solid var(--vix-accent);
+  padding: 12px 16px; border-radius: 0 10px 10px 0;
+  background: var(--vix-accent-s); margin: 18px 0;
+  font-size: 14.5px; line-height: 1.7;
+}
+
+/* ── Badges / custom containers ── */
+.vp-doc .tip,
+.vp-doc .warning,
+.vp-doc .danger,
+.vp-doc .info {
+  border-radius: 10px;
+  border: 1px solid;
+  padding: 14px 16px; margin: 18px 0;
+}
+
+/* ── Outline (TOC) ── */
+.VPDocAside .outline-link {
+  font-size: 12.5px; font-weight: 600;
+  transition: color .12s;
+}
+.VPDocAside .outline-link.active { color: var(--vix-accent) !important; font-weight: 700; }
+
+/* ── Prev / Next ── */
+.VPDocFooter .pager-link {
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  transition: border-color .14s, background .14s;
+}
+.VPDocFooter .pager-link:hover {
+  border-color: var(--vix-accent-b);
+  background: var(--vix-accent-s);
+}
+
+/* ── Search ── */
+.VPNavBarSearch .VPNavBarSearchButton,
+.VPNavBarSearch .DocSearch-Button {
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  font-size: 13px; font-weight: 600;
+  height: 34px; padding: 0 12px;
+}
+
+.VPLocalSearchBox { background: transparent !important; border: none !important; }
+.VPBackdrop,
+.VPNavBarSearch .DocSearch-Overlay,
+.VPLocalSearchBox .backdrop { background: transparent !important; backdrop-filter: none !important; }
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .VPNavBarTitle .title { font-size: 14px; }
+  .vp-doc h1 { font-size: 1.7rem; }
+  .vp-doc h2 { font-size: 1.15rem; }
+}
+
+@media (max-width: 640px) {
+  .VPDoc .container { padding: 0 16px !important; }
+  .vp-doc h1 { font-size: 1.5rem; }
+  .vp-doc p  { font-size: 14.5px; }
+  .vp-doc div[class*="language-"] pre { font-size: .82rem !important; padding: 12px !important; }
+}
+
+@media (max-width: 400px) {
+  .VPDoc .container { padding: 0 12px !important; }
+  .vp-doc h1 { font-size: 1.3rem; }
+}
+
+/* ── Utilities ── */
+.VPFooter { display: none !important; }
+
+/* Remove VitePress default sidebar background differences */
+.VPLocalNav { background: var(--vp-c-bg) !important; }
+
+/* Active sidebar item accent dot */
+.VPSidebarItem.is-active > .item {
+  position: relative;
+}
+.VPSidebarItem.is-active > .item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%; transform: translateY(-50%);
+  width: 3px; height: 16px;
+  background: var(--vix-accent);
+  border-radius: 999px;
+}
+
+.vp-doc [class*='language-'] code,
+.vp-doc div[class*='language-'] code {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+@media (max-width: 960px) {
+  /* Header principal normal */
+  .VPNavBar {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  /* Au départ, le deuxième header reste dans le flux normal */
+  .VPLocalNav {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: 99 !important;
+    background: var(--vp-c-bg) !important;
+    border-top: 1px solid var(--vp-c-divider) !important;
+    border-bottom: 1px solid var(--vp-c-divider) !important;
+  }
+
+  .VPLocalNav .container,
+  .VPLocalNav .items {
+    background: var(--vp-c-bg) !important;
+  }
+
+  /* Devient fixed seulement après scroll */
+  body.vix-local-nav-fixed .VPLocalNav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 999 !important;
+  }
+
+  /* Empêche le contenu de sauter quand le local nav devient fixed */
+  body.vix-local-nav-fixed .VPContent {
+    padding-top: var(--vp-local-nav-height, 48px) !important;
+  }
+}
+/* Active sidebar item spacing */
+.VPSidebarItem.is-active > .item > .link,
+.VPSidebarItem.is-active > .item .link {
+  padding-left: 18px !important;
+}
+
+/* Keep the green active indicator visible but not over the text */
+.VPSidebarItem.is-active > .item::before {
+  left: 4px !important;
+}
+@media (max-width: 640px) {
+  .VPDoc {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .VPDoc .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+/* Fix VitePress code line numbers vertical alignment */
+.vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper,
+.vp-doc [class*="language-"].line-numbers-mode .line-numbers-wrapper {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+  line-height: 1.7 !important;
+}
+
+.vp-doc div[class*="language-"].line-numbers-mode pre,
+.vp-doc [class*="language-"].line-numbers-mode pre {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+@media (max-width: 640px) {
+  .vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper,
+  .vp-doc [class*="language-"].line-numbers-mode .line-numbers-wrapper {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .vp-doc div[class*="language-"].line-numbers-mode pre,
+  .vp-doc [class*="language-"].line-numbers-mode pre {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+}
+.vp-doc .line-numbers-wrapper {
+  font-size: .875rem !important;
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+}
+@media (max-width: 960px) {
+  body.vix-local-nav-fixed .VPSidebar {
+    top: var(--vp-local-nav-height, 20px) !important;
+    height: calc(100vh - var(--vp-local-nav-height, 20px)) !important;
+  }
+
+  body.vix-local-nav-fixed .VPSidebar .curtain,
+  body.vix-local-nav-fixed .VPSidebar .content,
+  body.vix-local-nav-fixed .VPSidebar .nav {
+    padding-top: 8px !important;
+  }
+}
+/* Desktop sidebar scrollbar */
+@media (min-width: 961px) {
+  .VPSidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34, 197, 94, 0.45) transparent;
+  }
+
+  .VPSidebar::-webkit-scrollbar,
+  .VPSidebar .content::-webkit-scrollbar,
+  .VPSidebar .nav::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .VPSidebar::-webkit-scrollbar-track,
+  .VPSidebar .content::-webkit-scrollbar-track,
+  .VPSidebar .nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .VPSidebar::-webkit-scrollbar-thumb,
+  .VPSidebar .content::-webkit-scrollbar-thumb,
+  .VPSidebar .nav::-webkit-scrollbar-thumb {
+    background: rgba(34, 197, 94, 0.35);
+    border-radius: 999px;
+    border: 2px solid var(--vp-c-bg);
+  }
+
+  .VPSidebar::-webkit-scrollbar-thumb:hover,
+  .VPSidebar .content::-webkit-scrollbar-thumb:hover,
+  .VPSidebar .nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 197, 94, 0.65);
+  }
+}
+
+.vp-doc [class*='language-'] > button.copy {
+  top: 8px !important;
+  right: 8px !important;
+  width: 34px !important;
+  height: 34px !important;
+
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, .16) !important;
+  background-color: rgba(255, 255, 255, .08) !important;
+
+  background-image: none !important;
+
+  opacity: 0;
+  transition:
+    opacity .18s,
+    background-color .14s,
+    border-color .14s,
+    transform .12s !important;
+}
+
+.vp-doc [class*='language-']:hover > button.copy {
+  opacity: 1 !important;
+}
+
+.vp-doc [class*='language-'] > button.copy::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: auto;
+
+  background-color: rgba(255, 255, 255, .82);
+
+  mask-image: var(--vp-icon-copy);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 18px 18px;
+
+  -webkit-mask-image: var(--vp-icon-copy);
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 18px 18px;
+}
+
+.vp-doc [class*='language-'] > button.copy:hover {
+  background-color: rgba(34, 197, 94, .16) !important;
+  border-color: rgba(34, 197, 94, .35) !important;
+  transform: translateY(-1px);
+}
+
+.vp-doc [class*='language-'] > button.copy:hover::before {
+  background-color: #86efac;
+}
+
+.vp-doc [class*='language-'] > button.copy.copied::before {
+  background-color: #22c55e;
+}
