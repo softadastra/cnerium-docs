@@ -1,5 +1,85 @@
 import { defineConfig } from "vitepress";
 
+const cneriumCodeTheme = {
+  name: "cnerium-code",
+  type: "dark",
+  colors: {
+    "editor.background": "#0f151b",
+    "editor.foreground": "#d7e2ee",
+  },
+  tokenColors: [
+    {
+      scope: ["comment", "punctuation.definition.comment"],
+      settings: {
+        foreground: "#6a9955",
+        fontStyle: "italic",
+      },
+    },
+    {
+      scope: ["string"],
+      settings: {
+        foreground: "#ce9178",
+      },
+    },
+    {
+      scope: ["constant.numeric", "constant.language"],
+      settings: {
+        foreground: "#b5cea8",
+      },
+    },
+    {
+      scope: ["keyword.control"],
+      settings: {
+        foreground: "#c586c0",
+        fontStyle: "",
+      },
+    },
+    {
+      scope: ["keyword", "storage.type", "storage.modifier"],
+      settings: {
+        foreground: "#569cd6",
+        fontStyle: "",
+      },
+    },
+    {
+      scope: ["entity.name.function", "support.function"],
+      settings: {
+        foreground: "#dcdcaa",
+      },
+    },
+    {
+      scope: ["entity.name.type", "support.type", "support.class"],
+      settings: {
+        foreground: "#4ec9b0",
+      },
+    },
+    {
+      scope: ["entity.name.namespace", "support.namespace"],
+      settings: {
+        foreground: "#4fc1ff",
+      },
+    },
+    {
+      scope: ["variable.other.member", "variable.parameter"],
+      settings: {
+        foreground: "#9cdcfe",
+      },
+    },
+    {
+      scope: ["keyword.operator", "punctuation"],
+      settings: {
+        foreground: "#8b949e",
+      },
+    },
+    {
+      scope: ["variable", "identifier"],
+      settings: {
+        foreground: "#d7e2ee",
+      },
+    },
+  ],
+};
+
 const nav = [
   {
     text: "Vix.cpp",
@@ -260,6 +340,10 @@ export default defineConfig({
   markdown: {
     html: true,
     lineNumbers: true,
+    theme: {
+      light: cneriumCodeTheme,
+      dark: cneriumCodeTheme,
+    },
   },
 
   head: [

@@ -1,45 +1,48 @@
+```vue
 <script setup>
 import CodeBlock from "./CodeBlock.vue";
 
-const heroCode = `#include <cnerium/app/app.hpp>
-#include <vix/console.hpp>
-using namespace cnerium::app;
+const heroCode = `#include <vix.hpp>
+#include <cnerium/cnerium.hpp>
+int main()
+{
+  vix::App app;
+  auto cnerium = cnerium::attach(app);
 
-int main(){
-  App app;
-  app.get("/", [](AppContext &ctx){
-    ctx.text("Hello from Cnerium");
+  cnerium.durable_post("/orders","orders.create",
+      [](cnerium::DurableRequest &request){
+        return cnerium::created({
+            {"ok", true}
+      });
   });
 
-  app.listen("127.0.0.1", 8080, [](){
-    vix::console.info("Cnerium app is ready");
-  });
+  cnerium.start();
+  app.run();
 }`;
-
 const features = [
   {
-    title: "App Layer",
-    desc: "Build clean C++ web applications with routes, middleware, JSON, and runtime access.",
+    title: "Vix Integration",
+    desc: "Keep Vix as the backend owner and attach Cnerium only where retry safety matters.",
     icon: "swap",
-    href: "/modules/app",
+    href: "/concepts/cnerium-and-vix",
   },
   {
-    title: "Routing",
-    desc: "Register explicit HTTP routes with path parameters and predictable request handling.",
+    title: "Durable Routes",
+    desc: "Protect critical POST operations with stored responses, replay safety, and clear execution rules.",
     icon: "bolt",
-    href: "/guide/routing",
+    href: "/concepts/durable-routes",
   },
   {
-    title: "Middleware",
-    desc: "Compose logging, headers, auth guards, CORS, timing, and early responses in order.",
+    title: "Idempotency",
+    desc: "Use Idempotency-Key and request body hashing to distinguish safe retries from unsafe reuse.",
     icon: "chip",
-    href: "/guide/middleware",
+    href: "/concepts/idempotency",
   },
   {
-    title: "Runtime",
-    desc: "Schedule background tasks and run concurrent work through the Cnerium runtime layer.",
+    title: "Realtime Events",
+    desc: "Emit application events from durable handlers without duplicating notifications on safe retries.",
     icon: "p2p",
-    href: "/guide/runtime",
+    href: "/concepts/realtime-events",
   },
 ];
 
@@ -47,9 +50,11 @@ function iconPath(name) {
   if (name === "swap") {
     return "M7 7h11l-2-2m2 2l-2 2M17 17H6l2 2m-2-2l2-2";
   }
+
   if (name === "bolt") {
     return "M13 2L4 14h7l-1 8 9-12h-7l1-8z";
   }
+
   if (name === "chip") {
     return "M9 9h6v6H9V9zm-5 3h2m12 0h2M12 4v2m0 12v2M6.5 6.5l1.4 1.4m8.2 8.2l1.4 1.4m0-12.4l-1.4 1.4M7.9 16.1l-1.4 1.4";
   }
@@ -64,19 +69,17 @@ function iconPath(name) {
       <h1 class="vix-docs-h1">Cnerium Documentation</h1>
 
       <p class="vix-docs-lead">
-        A minimal C++ web framework for building clean,
-        fast, and explicit HTTP applications.
+        A reliability-first backend layer for Vix applications.
       </p>
 
       <p class="vix-docs-body">
-        Cnerium is built on top of Vix and gives modern C++ developers
-        a simple application layer for routes, JSON APIs, middleware,
-        error handling, runtime tasks, and server configuration without
-        hidden framework magic.
+        Cnerium does not replace Vix. It attaches to an existing Vix backend and
+        adds durable route behavior for critical write operations that must stay
+        correct under retries, timeouts, lost responses, and unstable networks.
       </p>
 
       <div class="actions">
-        <a class="primary" href="/quick-start">
+        <a class="primary" href="/getting-started/">
           Get started <span class="cta-arrow">→</span>
         </a>
       </div>
@@ -84,16 +87,16 @@ function iconPath(name) {
 
     <div class="vix-docs-hero__right">
       <div class="vix-hero-annot vix-hint">
-        Your first C++ endpoint <br>
-        with the Cnerium App API
+        Attach Cnerium to Vix <br />
+        and protect critical writes
       </div>
 
       <CodeBlock
         title="main.cpp"
         lang="cpp"
-        :chips="['app', 'http']"
+        :chips="['vix', 'cnerium', 'durable']"
         :code="heroCode"
-        :maxHeight="360"
+        :maxHeight="420"
       />
     </div>
   </div>
@@ -136,3 +139,4 @@ function iconPath(name) {
     </a>
   </div>
 </template>
+```

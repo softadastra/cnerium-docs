@@ -1,72 +1,110 @@
 /* ============================================================
-   Vix.cpp Docs — custom.css
-   Modern edition — refined light & dark, polished code blocks
+   Cnerium Docs - custom.css
+   Modern documentation theme with refined light/dark mode
+   and polished VitePress/Shiki code blocks
    ============================================================ */
 
-/* ── Tokens ── */
+/* ============================================================
+   Design tokens
+   ============================================================ */
+
 :root {
-  --vix-accent:   #22c55e;
-  --vix-accent-d: #16a34a;
-  --vix-accent-s: rgba(34, 197, 94, .08);
-  --vix-accent-b: rgba(34, 197, 94, .22);
-  --vix-radius:   14px;
-  --vix-radius-s: 10px;
-  --vix-shadow-s: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.06);
-  --vix-shadow-m: 0 4px 16px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.08);
-  --vix-transition: .16s cubic-bezier(.4,0,.2,1);
+  --cnerium-accent: #22c55e;
+  --cnerium-accent-dark: #16a34a;
+  --cnerium-accent-soft: rgba(34, 197, 94, 0.08);
+  --cnerium-accent-border: rgba(34, 197, 94, 0.22);
+
+  --cnerium-radius: 14px;
+  --cnerium-radius-sm: 10px;
+
+  --cnerium-shadow-sm: none;
+  --cnerium-shadow-md: none;
+
+  --cnerium-transition: 0.16s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Light ── */
+/* ============================================================
+   Light theme
+   ============================================================ */
+
 html:not(.dark) {
-  --vp-c-bg:      #fafbfc;
+  --vp-c-bg: #fafbfc;
   --vp-c-bg-soft: #f0f2f5;
-  --vp-c-bg-alt:  #e8ebef;
-  --vp-c-divider: rgba(0, 0, 0, .07);
-  --vp-c-text-1:  #1a1d23;
-  --vp-c-text-2:  #5c6370;
+  --vp-c-bg-alt: #e8ebef;
+  --vp-c-divider: rgba(0, 0, 0, 0.07);
+
+  --vp-c-text-1: #1a1d23;
+  --vp-c-text-2: #5c6370;
+
   --vp-c-brand-1: #16a34a;
   --vp-c-brand-2: #22c55e;
   --vp-c-brand-3: #4ade80;
 
-  /* Code block surfaces — light */
-  --cb-bg:        #1e2028;
-  --cb-bg-head:   #262830;
-  --cb-border:    rgba(0, 0, 0, .06);
-  --cb-shadow:    0 2px 12px rgba(0,0,0,.10), 0 1px 3px rgba(0,0,0,.06);
+  --cnerium-code-bg: #1e2028;
+  --cnerium-code-header-bg: #262830;
+  --cnerium-code-border: rgba(0, 0, 0, 0.06);
+  --cnerium-code-shadow: none;
 }
 
-/* ── Dark ── */
+/* ============================================================
+   Dark theme
+   ============================================================ */
+
 html.dark {
-  --vp-c-bg:      #0c0f14;
+  --vp-c-bg: #0c0f14;
   --vp-c-bg-soft: #13161d;
-  --vp-c-bg-alt:  #1a1d25;
-  --vp-c-divider: rgba(255, 255, 255, .07);
-  --vp-c-text-1:  rgba(255, 255, 255, .93);
-  --vp-c-text-2:  rgba(255, 255, 255, .55);
+  --vp-c-bg-alt: #1a1d25;
+  --vp-c-divider: rgba(255, 255, 255, 0.07);
+
+  --vp-c-text-1: rgba(255, 255, 255, 0.93);
+  --vp-c-text-2: rgba(255, 255, 255, 0.55);
+
   --vp-c-brand-1: #22c55e;
   --vp-c-brand-2: #4ade80;
   --vp-c-brand-3: #86efac;
 
-  /* Code block surfaces — dark */
-  --cb-bg:        #0d1117;
-  --cb-bg-head:   #161b22;
-  --cb-border:    rgba(255, 255, 255, .06);
-  --cb-shadow:    0 4px 24px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.2);
+  --cnerium-code-bg: #0d1117;
+  --cnerium-code-header-bg: #161b22;
+  --cnerium-code-border: rgba(255, 255, 255, 0.06);
+  --cnerium-code-shadow: none;
 }
 
-/* ── App / Layout ── */
-html, body, #app, .VPApp { min-height: 100vh; }
-.VPApp { display: flex; flex-direction: column; }
-.VPContent { flex: 1 0 auto; }
-html, body { overflow-x: hidden; }
+/* ============================================================
+   App and base layout
+   ============================================================ */
 
-/* Smooth theme transition */
+html,
+body,
+#app,
+.VPApp {
+  min-height: 100vh;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.VPApp {
+  display: flex;
+  flex-direction: column;
+}
+
+.VPContent {
+  flex: 1 0 auto;
+}
+
 html.dark,
 html:not(.dark) {
-  transition: background-color .3s ease, color .3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
-/* ── Navbar ── */
+/* ============================================================
+   Default VitePress navbar
+   ============================================================ */
+
 .VPNavBar {
   background: color-mix(in srgb, var(--vp-c-bg) 85%, transparent) !important;
   border-bottom: 1px solid var(--vp-c-divider) !important;
@@ -75,10 +113,14 @@ html:not(.dark) {
 }
 
 .VPNavBarTitle .title {
+  color: var(--vp-c-text-1);
   font-size: 15px;
   font-weight: 800;
   letter-spacing: -0.025em;
-  color: var(--vp-c-text-1);
+}
+
+.VPNavBarTitle .VPImage {
+  border-radius: 8px;
 }
 
 .VPNavBarMenuLink,
@@ -86,129 +128,140 @@ html:not(.dark) {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  transition: color var(--vix-transition);
+  transition: color var(--cnerium-transition);
 }
 
-.VPNavBarTitle .VPImage { border-radius: 8px; }
+/* ============================================================
+   Sidebar
+   ============================================================ */
 
-/* ── Sidebar ── */
-.VPSidebar {
-  background: var(--vp-c-bg) !important;
-}
-
+.VPSidebar,
 .VPSidebar .curtain,
 .VPSidebar .content,
 .VPSidebar .nav {
   background: var(--vp-c-bg) !important;
 }
 
-/* Sidebar text */
 .VPSidebarGroup .title {
+  color: var(--vp-c-text-2);
   font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--vp-c-text-2);
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .VPSidebarItem .link {
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 550;
   line-height: 1.45;
-  border-radius: 8px;
-  transition: all var(--vix-transition);
+  transition: all var(--cnerium-transition);
 }
 
 .VPSidebarItem .link:hover {
-  background: var(--vix-accent-s);
-  color: var(--vix-accent);
+  color: var(--cnerium-accent);
+  background: var(--cnerium-accent-soft);
 }
 
 .VPSidebarItem.is-active > .item > .link,
 .VPSidebarItem.is-active > .item .link {
-  color: var(--vix-accent) !important;
+  color: var(--cnerium-accent) !important;
+  background: var(--cnerium-accent-soft);
   font-weight: 700 !important;
-  background: var(--vix-accent-s);
   padding-left: 18px !important;
 }
 
-/* Active sidebar indicator */
 .VPSidebarItem.is-active > .item {
   position: relative;
 }
+
 .VPSidebarItem.is-active > .item::before {
   content: "";
   position: absolute;
   left: 4px !important;
-  top: 50%; transform: translateY(-50%);
-  width: 3px; height: 16px;
-  background: var(--vix-accent);
+  top: 50%;
+  width: 3px;
+  height: 16px;
   border-radius: 999px;
+  background: var(--cnerium-accent);
+  transform: translateY(-50%);
 }
 
-/* Sidebar scrollbar */
 .VPSidebar .nav {
   scrollbar-width: thin;
   scrollbar-color: var(--vp-c-divider) transparent;
 }
-.VPSidebar .nav::-webkit-scrollbar { width: 6px; }
-.VPSidebar .nav::-webkit-scrollbar-track { background: transparent; }
-.VPSidebar .nav::-webkit-scrollbar-thumb {
-  background: var(--vp-c-divider); border-radius: 999px;
+
+.VPSidebar .nav::-webkit-scrollbar {
+  width: 6px;
 }
 
-/* Desktop sidebar scrollbar */
+.VPSidebar .nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.VPSidebar .nav::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 999px;
+}
+
 @media (min-width: 961px) {
   .VPSidebar {
     scrollbar-width: thin;
-    scrollbar-color: rgba(34, 197, 94, .35) transparent;
+    scrollbar-color: rgba(34, 197, 94, 0.35) transparent;
   }
+
   .VPSidebar::-webkit-scrollbar,
   .VPSidebar .content::-webkit-scrollbar,
-  .VPSidebar .nav::-webkit-scrollbar { width: 7px; }
+  .VPSidebar .nav::-webkit-scrollbar {
+    width: 7px;
+  }
+
   .VPSidebar::-webkit-scrollbar-track,
   .VPSidebar .content::-webkit-scrollbar-track,
-  .VPSidebar .nav::-webkit-scrollbar-track { background: transparent; }
+  .VPSidebar .nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   .VPSidebar::-webkit-scrollbar-thumb,
   .VPSidebar .content::-webkit-scrollbar-thumb,
   .VPSidebar .nav::-webkit-scrollbar-thumb {
-    background: rgba(34, 197, 94, .28);
-    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.28);
     border: 2px solid var(--vp-c-bg);
+    border-radius: 999px;
   }
+
   .VPSidebar::-webkit-scrollbar-thumb:hover,
   .VPSidebar .content::-webkit-scrollbar-thumb:hover,
   .VPSidebar .nav::-webkit-scrollbar-thumb:hover {
-    background: rgba(34, 197, 94, .55);
+    background: rgba(34, 197, 94, 0.55);
   }
 }
 
-
-/* ══════════════════════════════════════════════
-   DOC CONTENT
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Documentation content
+   ============================================================ */
 
 .VPDoc .vp-doc {
   max-width: 740px;
 }
 
-/* ── Headings ── */
 .vp-doc h1 {
+  color: var(--vp-c-text-1);
   font-size: clamp(1.7rem, 3vw, 2.2rem);
-  letter-spacing: -0.035em;
   font-weight: 900;
   line-height: 1.08;
-  color: var(--vp-c-text-1);
+  letter-spacing: -0.035em;
 }
 
 .vp-doc h2 {
+  margin-top: 2.2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--vp-c-divider);
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  border-top: 1px solid var(--vp-c-divider);
-  margin-top: 2.2rem;
-  padding-top: 1.6rem;
 }
 
 .vp-doc h3 {
@@ -217,111 +270,147 @@ html:not(.dark) {
   letter-spacing: -0.01em;
 }
 
-/* ── Paragraphs ── */
 .vp-doc p {
-  line-height: 1.78;
-  font-size: 15px;
   color: var(--vp-c-text-1);
+  font-size: 15px;
+  line-height: 1.78;
 }
 
-/* ── Inline code ── */
-.vp-doc :not(pre) > code {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: .8em;
-  padding: 2.5px 7px;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background var(--vix-transition), border-color var(--vix-transition);
+/* ============================================================
+   Links
+   ============================================================ */
+
+.vp-doc a {
+  color: var(--cnerium-accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition:
+    color var(--cnerium-transition),
+    text-decoration var(--cnerium-transition);
 }
 
-html:not(.dark) .vp-doc :not(pre) > code {
-  background: rgba(34, 197, 94, .07);
-  border: 1px solid rgba(34, 197, 94, .15);
-  color: #15803d;
+.vp-doc a:hover {
+  color: var(--cnerium-accent-dark);
+  text-decoration: underline;
 }
 
-html.dark .vp-doc :not(pre) > code {
-  background: rgba(34, 197, 94, .08);
-  border: 1px solid rgba(34, 197, 94, .18);
+html.dark .vp-doc a {
   color: #4ade80;
 }
 
+html.dark .vp-doc a:hover {
+  color: #86efac;
+}
 
-/* ══════════════════════════════════════════════
-   CODE BLOCKS — VitePress native (Shiki)
-   Both themes use a dark code surface for consistency
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Inline code
+   ============================================================ */
+
+.vp-doc :not(pre) > code {
+  padding: 2.5px 7px;
+  border-radius: 6px;
+  font-family:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  font-size: 0.8em;
+  font-weight: 600;
+  transition:
+    background var(--cnerium-transition),
+    border-color var(--cnerium-transition);
+}
+
+html:not(.dark) .vp-doc :not(pre) > code {
+  color: #15803d;
+  background: rgba(34, 197, 94, 0.07);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+html.dark .vp-doc :not(pre) > code {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.18);
+}
+
+/* ============================================================
+   Code blocks - VitePress native Shiki blocks
+   Both light and dark themes use a dark code surface
+   ============================================================ */
 
 .vp-doc div[class*="language-"],
 .vp-doc [class*="language-"] {
-  border-radius: var(--vix-radius) !important;
-  border: 1px solid var(--cb-border) !important;
-  overflow: hidden;
-  margin: 20px 0 !important;
-  box-shadow: var(--cb-shadow);
-  transition: box-shadow var(--vix-transition), border-color var(--vix-transition);
+  margin: 18px 0 24px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--cnerium-code-border) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  background: var(--cnerium-code-bg) !important;
+  transition: border-color var(--cnerium-transition);
 }
 
-/* Subtle lift on hover */
 .vp-doc div[class*="language-"]:hover,
 .vp-doc [class*="language-"]:hover {
-  box-shadow: var(--cb-shadow), 0 0 0 1px var(--vix-accent-b);
+  box-shadow: none !important;
+  border-color: var(--cnerium-accent-border) !important;
 }
 
 .vp-doc div[class*="language-"] pre,
 .vp-doc [class*="language-"] pre {
-  padding: 16px 18px !important;
-  font-size: .875rem !important;
-  line-height: 1.72 !important;
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace !important;
-  background: var(--cb-bg) !important;
   margin: 0 !important;
-  overflow-x: auto;
+  padding: 15px 16px !important;
+  overflow-x: auto !important;
+  background: transparent !important;
+  font-size: 0.875rem !important;
+  line-height: 1.68 !important;
+  box-shadow: none !important;
 }
 
-.vp-doc [class*='language-'] code,
-.vp-doc div[class*='language-'] code {
+.vp-doc [class*="language-"] code,
+.vp-doc div[class*="language-"] code {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
 /* Language label */
+
 .vp-doc div[class*="language-"] .lang {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.28);
   top: 12px;
   right: 14px;
+  color: rgba(255, 255, 255, 0.28);
+  font-family:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Copy button */
-.vp-doc [class*='language-'] > button.copy {
+
+.vp-doc [class*="language-"] > button.copy {
   top: 8px !important;
   right: 8px !important;
   width: 32px !important;
   height: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 8px !important;
-  border: 1px solid rgba(255, 255, 255, .12) !important;
-  background-color: rgba(255, 255, 255, .06) !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
   background-image: none !important;
   opacity: 0;
-  transition: all var(--vix-transition) !important;
+  transition: all var(--cnerium-transition) !important;
 }
 
-.vp-doc [class*='language-']:hover > button.copy {
+.vp-doc [class*="language-"]:hover > button.copy {
   opacity: 1 !important;
 }
 
-.vp-doc [class*='language-'] > button.copy::before {
+.vp-doc [class*="language-"] > button.copy::before {
   content: "";
   display: block;
   width: 16px;
   height: 16px;
   margin: auto;
-  background-color: rgba(255, 255, 255, .72);
+  background-color: rgba(255, 255, 255, 0.72);
   mask-image: var(--vp-icon-copy);
   mask-position: center;
   mask-repeat: no-repeat;
@@ -332,40 +421,51 @@ html.dark .vp-doc :not(pre) > code {
   -webkit-mask-size: 16px 16px;
 }
 
-.vp-doc [class*='language-'] > button.copy:hover {
-  background-color: rgba(34, 197, 94, .14) !important;
-  border-color: rgba(34, 197, 94, .30) !important;
+.vp-doc [class*="language-"] > button.copy:hover {
+  border-color: rgba(34, 197, 94, 0.3) !important;
+  background-color: rgba(34, 197, 94, 0.14) !important;
   transform: translateY(-1px);
 }
 
-.vp-doc [class*='language-'] > button.copy:hover::before {
+.vp-doc [class*="language-"] > button.copy:hover::before {
   background-color: #86efac;
 }
 
-.vp-doc [class*='language-'] > button.copy.copied::before {
+.vp-doc [class*="language-"] > button.copy.copied::before {
   background-color: #22c55e;
 }
 
 /* Code scrollbars */
-.vp-doc pre::-webkit-scrollbar { height: 6px; }
+
+.vp-doc pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.vp-doc pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .vp-doc pre::-webkit-scrollbar-thumb {
-  background: rgba(34,197,94,.25);
+  background: rgba(34, 197, 94, 0.25);
   border-radius: 999px;
 }
+
 .vp-doc pre::-webkit-scrollbar-thumb:hover {
-  background: rgba(34,197,94,.45);
+  background: rgba(34, 197, 94, 0.45);
 }
-.vp-doc pre::-webkit-scrollbar-track { background: transparent; }
 
 /* Line numbers */
+
 .vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper,
 .vp-doc [class*="language-"].line-numbers-mode .line-numbers-wrapper {
   padding-top: 16px !important;
   padding-bottom: 16px !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  font-family:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace !important;
+  font-size: 0.875rem !important;
   line-height: 1.72 !important;
-  font-size: .875rem !important;
-  font-family: "JetBrains Mono", ui-monospace, monospace !important;
-  border-right: 1px solid rgba(255,255,255,.06);
 }
 
 .vp-doc div[class*="language-"].line-numbers-mode pre,
@@ -374,160 +474,261 @@ html.dark .vp-doc :not(pre) > code {
   padding-bottom: 16px !important;
 }
 
+/* Plain text code blocks */
 
-/* ══════════════════════════════════════════════
-   CUSTOM CodeBlock COMPONENT — Light mode overrides
-   The component always renders dark internally,
-   but we refine borders/shadows for light context
-   ══════════════════════════════════════════════ */
+.vp-doc div[class*="language-txt"] code,
+.vp-doc div[class*="language-text"] code,
+.vp-doc div[class*="language-plain"] code,
+.vp-doc div[class*="language-plaintext"] code,
+.vp-doc [class*="language-txt"] code,
+.vp-doc [class*="language-text"] code,
+.vp-doc [class*="language-plain"] code,
+.vp-doc [class*="language-plaintext"] code,
+.vp-doc div[class*="language-txt"] pre,
+.vp-doc div[class*="language-text"] pre,
+.vp-doc div[class*="language-plain"] pre,
+.vp-doc div[class*="language-plaintext"] pre,
+.vp-doc [class*="language-txt"] pre,
+.vp-doc [class*="language-text"] pre,
+.vp-doc [class*="language-plain"] pre,
+.vp-doc [class*="language-plaintext"] pre {
+  color: #f8fafc !important;
+}
+
+/* ============================================================
+   Optional custom CodeBlock component
+   ============================================================ */
 
 html:not(.dark) .cb {
-  border-color: rgba(0,0,0,.08);
-  background: var(--cb-bg);
-  box-shadow: var(--cb-shadow);
+  background: var(--cnerium-code-bg);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: none !important;
 }
 
 html:not(.dark) .cb-head {
-  background: var(--cb-bg-head);
-  border-color: rgba(255,255,255,.06);
+  background: var(--cnerium-code-header-bg);
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 html:not(.dark) .cb-body {
-  background: var(--cb-bg);
+  background: var(--cnerium-code-bg);
 }
 
-
-/* ══════════════════════════════════════════════
-   TABLES
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Tables
+   ============================================================ */
 
 .vp-doc table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13.5px;
-  margin: 20px 0;
   display: block;
+  width: 100%;
+  margin: 20px 0;
   overflow-x: auto;
-  border-radius: var(--vix-radius-s);
+  border-collapse: collapse;
+  border-radius: var(--cnerium-radius-sm);
+  font-size: 13.5px;
 }
 
 .vp-doc th {
   padding: 10px 14px;
   border-bottom: 2px solid var(--vp-c-divider);
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
   color: var(--vp-c-text-2);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-align: left;
+  text-transform: uppercase;
 }
 
 .vp-doc td {
   padding: 10px 14px;
   border-bottom: 1px solid var(--vp-c-divider);
-  vertical-align: top;
   line-height: 1.65;
+  vertical-align: top;
 }
 
-.vp-doc tr:last-child td { border-bottom: 0; }
+.vp-doc tr:last-child td {
+  border-bottom: 0;
+}
 
-/* Subtle row hover */
 .vp-doc tr:hover td {
-  background: var(--vix-accent-s);
-  transition: background var(--vix-transition);
+  background: var(--cnerium-accent-soft);
+  transition: background var(--cnerium-transition);
 }
 
-
-/* ══════════════════════════════════════════════
-   BLOCKQUOTES
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Blockquotes
+   ============================================================ */
 
 .vp-doc blockquote {
-  border-left: 3px solid var(--vix-accent);
-  padding: 14px 18px;
-  border-radius: 0 var(--vix-radius-s) var(--vix-radius-s) 0;
-  background: var(--vix-accent-s);
   margin: 20px 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--cnerium-accent);
+  border-radius: 0 var(--cnerium-radius-sm) var(--cnerium-radius-sm) 0;
+  background: var(--cnerium-accent-soft);
   font-size: 14.5px;
   line-height: 1.72;
 }
 
-
-/* ══════════════════════════════════════════════
-   BADGES / CUSTOM CONTAINERS
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Custom containers
+   ============================================================ */
 
 .vp-doc .tip,
 .vp-doc .warning,
 .vp-doc .danger,
 .vp-doc .info {
-  border-radius: var(--vix-radius-s);
-  border: 1px solid;
-  padding: 14px 18px;
   margin: 20px 0;
+  padding: 14px 18px;
+  border: 1px solid;
+  border-radius: var(--cnerium-radius-sm);
 }
 
-
-/* ══════════════════════════════════════════════
-   OUTLINE (TOC)
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Outline
+   ============================================================ */
 
 .VPDocAside .outline-link {
   font-size: 12.5px;
   font-weight: 600;
-  transition: color var(--vix-transition);
+  transition: color var(--cnerium-transition);
 }
 
 .VPDocAside .outline-link.active {
-  color: var(--vix-accent) !important;
+  color: var(--cnerium-accent) !important;
   font-weight: 700;
 }
 
-
-/* ══════════════════════════════════════════════
-   PREV / NEXT NAVIGATION
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Previous and next navigation
+   ============================================================ */
 
 .VPDocFooter .pager-link {
-  border-radius: var(--vix-radius);
   border: 1px solid var(--vp-c-divider);
+  border-radius: var(--cnerium-radius);
   background: var(--vp-c-bg-soft);
-  transition: all var(--vix-transition);
+  transition: all var(--cnerium-transition);
 }
 
 .VPDocFooter .pager-link:hover {
-  border-color: var(--vix-accent-b);
-  background: var(--vix-accent-s);
-  transform: translateY(-1px);
-  box-shadow: var(--vix-shadow-s);
+  border-color: var(--cnerium-accent-border);
+  background: var(--cnerium-accent-soft);
+  box-shadow: none !important;
+  transform: none !important;
 }
 
-
-/* ══════════════════════════════════════════════
-   SEARCH
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Search
+   ============================================================ */
 
 .VPNavBarSearch .VPNavBarSearchButton,
 .VPNavBarSearch .DocSearch-Button {
-  border-radius: var(--vix-radius-s);
+  height: 34px;
+  padding: 0 12px;
   border: 1px solid var(--vp-c-divider);
+  border-radius: var(--cnerium-radius-sm);
   background: var(--vp-c-bg-soft);
   font-size: 13px;
   font-weight: 600;
-  height: 34px;
-  padding: 0 12px;
-  transition: all var(--vix-transition);
+  transition: all var(--cnerium-transition);
 }
 
-.VPLocalSearchBox { background: transparent !important; border: none !important; }
+.VPLocalSearchBox {
+  background: transparent !important;
+  border: none !important;
+}
+
 .VPBackdrop,
 .VPNavBarSearch .DocSearch-Overlay,
-.VPLocalSearchBox .backdrop { background: transparent !important; backdrop-filter: none !important; }
+.VPLocalSearchBox .backdrop {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
 
+/* ============================================================
+   Breadcrumb
+   ============================================================ */
 
-/* ══════════════════════════════════════════════
-   MOBILE — Sidebar & Layout
-   ══════════════════════════════════════════════ */
+.cnerium-breadcrumb,
+.vix-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: var(--vp-c-text-2);
+  font-family:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.cnerium-breadcrumb-home,
+.vix-breadcrumb-home {
+  display: inline-flex;
+  align-items: center;
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+}
+
+.cnerium-breadcrumb-link,
+.vix-breadcrumb-link {
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+  transition: color var(--cnerium-transition);
+}
+
+.cnerium-breadcrumb-link:hover,
+.vix-breadcrumb-link:hover {
+  color: var(--cnerium-accent);
+}
+
+.cnerium-breadcrumb-current,
+.vix-breadcrumb-current {
+  color: var(--vp-c-text-1);
+}
+
+.cnerium-breadcrumb-separator,
+.vix-breadcrumb-separator {
+  color: var(--vp-c-text-2);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   Action buttons
+   ============================================================ */
+
+.actions .primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #22c55e;
+  color: #052e16;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.actions .primary:hover {
+  background: #4ade80;
+  color: #052e16 !important;
+}
+
+.actions .primary .cta-arrow {
+  transition: transform 0.15s ease;
+}
+
+.actions .primary:hover .cta-arrow {
+  transform: translateX(2px);
+}
+
+/* ============================================================
+   Mobile layout
+   ============================================================ */
 
 @media (max-width: 960px) {
   .VPNavBar {
@@ -557,6 +758,7 @@ html:not(.dark) .cb-body {
     background: var(--vp-c-bg) !important;
   }
 
+  body.cnerium-local-nav-fixed .VPLocalNav,
   body.vix-local-nav-fixed .VPLocalNav {
     position: fixed !important;
     top: 0 !important;
@@ -566,15 +768,20 @@ html:not(.dark) .cb-body {
     z-index: 999 !important;
   }
 
+  body.cnerium-local-nav-fixed .VPContent,
   body.vix-local-nav-fixed .VPContent {
     padding-top: var(--vp-local-nav-height, 48px) !important;
   }
 
+  body.cnerium-local-nav-fixed .VPSidebar,
   body.vix-local-nav-fixed .VPSidebar {
     top: var(--vp-local-nav-height, 20px) !important;
     height: calc(100vh - var(--vp-local-nav-height, 20px)) !important;
   }
 
+  body.cnerium-local-nav-fixed .VPSidebar .curtain,
+  body.cnerium-local-nav-fixed .VPSidebar .content,
+  body.cnerium-local-nav-fixed .VPSidebar .nav,
   body.vix-local-nav-fixed .VPSidebar .curtain,
   body.vix-local-nav-fixed .VPSidebar .content,
   body.vix-local-nav-fixed .VPSidebar .nav {
@@ -592,17 +799,28 @@ html:not(.dark) .cb-body {
   .VPDoc .content-container {
     overflow: visible !important;
   }
+
+  .VPNavBarTitle .title {
+    font-size: 14px;
+  }
+
+  .vp-doc h1 {
+    font-size: 1.7rem;
+  }
+
+  .vp-doc h2 {
+    font-size: 1.15rem;
+  }
 }
 
-
-/* ══════════════════════════════════════════════
-   RESPONSIVE TYPOGRAPHY & SPACING
-   ══════════════════════════════════════════════ */
-
-@media (max-width: 960px) {
-  .VPNavBarTitle .title { font-size: 14px; }
-  .vp-doc h1 { font-size: 1.7rem; }
-  .vp-doc h2 { font-size: 1.15rem; }
+@media (max-width: 768px) {
+  .cnerium-breadcrumb,
+  .vix-breadcrumb {
+    margin-bottom: 20px;
+    padding-bottom: 4px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 640px) {
@@ -616,13 +834,18 @@ html:not(.dark) .cb-body {
     padding-right: 0 !important;
   }
 
-  .vp-doc h1 { font-size: 1.5rem; }
-  .vp-doc p  { font-size: 14.5px; }
+  .vp-doc h1 {
+    font-size: 1.5rem;
+  }
+
+  .vp-doc p {
+    font-size: 14.5px;
+  }
 
   .vp-doc div[class*="language-"] pre,
   .vp-doc [class*="language-"] pre {
-    font-size: .82rem !important;
     padding: 12px 14px !important;
+    font-size: 0.82rem !important;
   }
 
   .vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper,
@@ -639,109 +862,153 @@ html:not(.dark) .cb-body {
 }
 
 @media (max-width: 400px) {
-  .VPDoc .container { padding: 0 12px !important; }
-  .vp-doc h1 { font-size: 1.3rem; }
+  .VPDoc .container {
+    padding: 0 12px !important;
+  }
+
+  .vp-doc h1 {
+    font-size: 1.3rem;
+  }
 }
 
+/* ============================================================
+   Utilities
+   ============================================================ */
 
-/* ══════════════════════════════════════════════
-   UTILITIES
-   ══════════════════════════════════════════════ */
-
-.VPFooter { display: none !important; }
-.VPLocalNav { background: var(--vp-c-bg) !important; }
-
-
-/* ══════════════════════════════════════════════
-   LINKS — Accent-colored with subtle underline
-   ══════════════════════════════════════════════ */
-
-.vp-doc a {
-  color: var(--vix-accent);
-  text-decoration: none;
-  text-underline-offset: 3px;
-  transition: color var(--vix-transition), text-decoration var(--vix-transition);
+.VPFooter {
+  display: none !important;
 }
 
-.vp-doc a:hover {
-  color: var(--vix-accent-d);
-  text-decoration: underline;
+.VPLocalNav {
+  background: var(--vp-c-bg) !important;
 }
 
-html.dark .vp-doc a {
-  color: #4ade80;
-}
-
-html.dark .vp-doc a:hover {
-  color: #86efac;
-}
-
-
-/* ══════════════════════════════════════════════
-   SELECTION COLOR
-   ══════════════════════════════════════════════ */
+/* ============================================================
+   Selection
+   ============================================================ */
 
 ::selection {
-  background: rgba(34, 197, 94, .20);
+  background: rgba(34, 197, 94, 0.2);
   color: inherit;
 }
 
 html.dark ::selection {
-  background: rgba(34, 197, 94, .25);
-}
-.actions .primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-
-  padding: 10px 16px;
-  border-radius: 8px;
-
-  background: #22c55e;
-  color: #052e16;
-
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.actions .primary:hover {
-  background: #4ade80;
-  color: #052e16 !important;
-}
-
-.actions .primary .cta-arrow {
-  transition: transform 0.15s ease;
-}
-
-.actions .primary:hover .cta-arrow {
-  transform: translateX(2px);
+  background: rgba(34, 197, 94, 0.25);
 }
 /* ============================================================
-   Plain text code blocks
-   Keep txt/text/plain blocks readable on dark code surfaces
+   Final polish - flat expert documentation style
    ============================================================ */
 
-.vp-doc div[class*="language-txt"] code,
-.vp-doc div[class*="language-text"] code,
-.vp-doc div[class*="language-plain"] code,
-.vp-doc div[class*="language-plaintext"] code,
-.vp-doc [class*="language-txt"] code,
-.vp-doc [class*="language-text"] code,
-.vp-doc [class*="language-plain"] code,
-.vp-doc [class*="language-plaintext"] code {
-  color: #f8fafc !important;
+.vp-doc div[class*="language-"],
+.vp-doc [class*="language-"],
+.vp-doc pre,
+.cb,
+.VPDocFooter .pager-link,
+.vp-doc .tip,
+.vp-doc .info,
+.vp-doc .warning,
+.vp-doc .danger,
+.vp-doc blockquote {
+  box-shadow: none !important;
 }
 
-.vp-doc div[class*="language-txt"] pre,
-.vp-doc div[class*="language-text"] pre,
-.vp-doc div[class*="language-plain"] pre,
-.vp-doc div[class*="language-plaintext"] pre,
-.vp-doc [class*="language-txt"] pre,
-.vp-doc [class*="language-text"] pre,
-.vp-doc [class*="language-plain"] pre,
-.vp-doc [class*="language-plaintext"] pre {
-  color: #f8fafc !important;
+.vp-doc div[class*="language-"]:hover,
+.vp-doc [class*="language-"]:hover,
+.cb:hover,
+.VPDocFooter .pager-link:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Code blocks: flatter, cleaner, more technical */
+.vp-doc div[class*="language-"],
+.vp-doc [class*="language-"] {
+  border-radius: 8px !important;
+  margin: 18px 0 24px !important;
+}
+
+/* Tables: less card-like */
+.vp-doc table {
+  border-radius: 0 !important;
+}
+
+/* Containers: softer but flat */
+.vp-doc blockquote,
+.vp-doc .tip,
+.vp-doc .info,
+.vp-doc .warning,
+.vp-doc .danger {
+  border-radius: 8px !important;
+}
+/* ============================================================
+   Fix VitePress line numbers area
+   Make line numbers part of the same flat code surface
+   ============================================================ */
+
+.vp-doc div[class*="language-"].line-numbers-mode,
+.vp-doc [class*="language-"].line-numbers-mode {
+  background: var(--cnerium-code-bg) !important;
+  box-shadow: none !important;
+}
+
+/* Left line numbers column */
+.vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper,
+.vp-doc [class*="language-"].line-numbers-mode .line-numbers-wrapper {
+  background: transparent !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.055) !important;
+  box-shadow: none !important;
+
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+
+  font-size: 0.875rem !important;
+  line-height: 1.68 !important;
+  color: rgba(215, 226, 238, 0.36) !important;
+}
+
+/* Code area must align with line numbers */
+.vp-doc div[class*="language-"].line-numbers-mode pre,
+.vp-doc [class*="language-"].line-numbers-mode pre {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  line-height: 1.68 !important;
+}
+
+/* Remove any extra internal block feeling */
+.vp-doc div[class*="language-"].line-numbers-mode::before,
+.vp-doc [class*="language-"].line-numbers-mode::before,
+.vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper::before,
+.vp-doc [class*="language-"].line-numbers-mode .line-numbers-wrapper::before {
+  display: none !important;
+  content: none !important;
+}
+
+.vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper,
+.vp-doc [class*="language-"].line-numbers-mode .line-numbers-wrapper {
+  background: transparent !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.055) !important;
+  box-shadow: none !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  font-size: 0.875rem !important;
+  line-height: 1.68 !important;
+  color: rgba(215, 226, 238, 0.36) !important;
+}
+
+/* Mobile alignment */
+@media (max-width: 640px) {
+  .vp-doc div[class*="language-"].line-numbers-mode .line-numbers-wrapper,
+  .vp-doc [class*="language-"].line-numbers-mode .line-numbers-wrapper {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+    font-size: 0.82rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .vp-doc div[class*="language-"].line-numbers-mode pre,
+  .vp-doc [class*="language-"].line-numbers-mode pre {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+    line-height: 1.68 !important;
+  }
 }
