@@ -1,11 +1,257 @@
 import { defineConfig } from "vitepress";
 
+const nav = [
+  {
+    text: "Vix.cpp",
+    link: "https://vixcpp.com",
+  },
+  {
+    text: "Vix Docs",
+    link: "https://docs.vixcpp.com",
+  },
+  {
+    text: "Softadastra",
+    link: "https://softadastra.com",
+  },
+];
+
+const gettingStarted = {
+  text: "Getting Started",
+  collapsed: false,
+  items: [
+    {
+      text: "Introduction",
+      link: "/getting-started/",
+    },
+    {
+      text: "What is Cnerium?",
+      link: "/getting-started/what-is-cnerium",
+    },
+    {
+      text: "Why Cnerium Exists",
+      link: "/getting-started/why-cnerium-exists",
+    },
+    {
+      text: "Install",
+      link: "/getting-started/install",
+    },
+    {
+      text: "Your First Durable Route",
+      link: "/getting-started/first-durable-route",
+    },
+  ],
+};
+
+const coreConcepts = {
+  text: "Core Concepts",
+  collapsed: false,
+  items: [
+    {
+      text: "Cnerium and Vix",
+      link: "/concepts/cnerium-and-vix",
+    },
+    {
+      text: "Attach Model",
+      link: "/concepts/attach-model",
+    },
+    {
+      text: "Durable Routes",
+      link: "/concepts/durable-routes",
+    },
+    {
+      text: "Idempotency",
+      link: "/concepts/idempotency",
+    },
+    {
+      text: "Replay Protection",
+      link: "/concepts/replay-protection",
+    },
+    {
+      text: "Stored Responses",
+      link: "/concepts/stored-responses",
+    },
+    {
+      text: "Realtime Events",
+      link: "/concepts/realtime-events",
+    },
+  ],
+};
+
+const guides = {
+  text: "Guides",
+  collapsed: false,
+  items: [
+    {
+      text: "Add Cnerium to a Vix Backend",
+      link: "/guides/add-to-vix-backend",
+    },
+    {
+      text: "Create a Durable POST Route",
+      link: "/guides/create-durable-post-route",
+    },
+    {
+      text: "Use Idempotency-Key",
+      link: "/guides/use-idempotency-key",
+    },
+    {
+      text: "Emit Realtime Events",
+      link: "/guides/emit-realtime-events",
+    },
+    {
+      text: "Handle Unsafe Retries",
+      link: "/guides/handle-unsafe-retries",
+    },
+    {
+      text: "Configure Storage",
+      link: "/guides/configure-storage",
+    },
+    {
+      text: "Test Durable Behavior",
+      link: "/guides/test-durable-behavior",
+    },
+  ],
+};
+
+const examples = {
+  text: "Examples",
+  collapsed: true,
+  items: [
+    {
+      text: "Overview",
+      link: "/examples/",
+    },
+    {
+      text: "Durable Orders",
+      link: "/examples/durable-orders",
+    },
+    {
+      text: "Durable Orders with Realtime",
+      link: "/examples/durable-orders-realtime",
+    },
+    {
+      text: "Payments",
+      link: "/examples/payments",
+    },
+    {
+      text: "Registration",
+      link: "/examples/registration",
+    },
+  ],
+};
+
+const reference = {
+  text: "Reference",
+  collapsed: true,
+  items: [
+    {
+      text: "Overview",
+      link: "/reference/",
+    },
+    {
+      text: "attach",
+      link: "/reference/attach",
+    },
+    {
+      text: "AttachedApp",
+      link: "/reference/attached-app",
+    },
+    {
+      text: "AppConfig",
+      link: "/reference/app-config",
+    },
+    {
+      text: "DurableRequest",
+      link: "/reference/durable-request",
+    },
+    {
+      text: "DurableResponse",
+      link: "/reference/durable-response",
+    },
+    {
+      text: "DurableRoute",
+      link: "/reference/durable-route",
+    },
+    {
+      text: "Idempotency",
+      link: "/reference/idempotency",
+    },
+    {
+      text: "Store",
+      link: "/reference/store",
+    },
+    {
+      text: "Realtime",
+      link: "/reference/realtime",
+    },
+  ],
+};
+
+const internals = {
+  text: "Internals",
+  collapsed: true,
+  items: [
+    {
+      text: "Architecture",
+      link: "/internals/architecture",
+    },
+    {
+      text: "Vix Integration",
+      link: "/internals/vix-integration",
+    },
+    {
+      text: "Softadastra SDK Integration",
+      link: "/internals/softadastra-sdk-integration",
+    },
+    {
+      text: "Request Lifecycle",
+      link: "/internals/request-lifecycle",
+    },
+    {
+      text: "Storage Keys",
+      link: "/internals/storage-keys",
+    },
+    {
+      text: "Design Boundaries",
+      link: "/internals/design-boundaries",
+    },
+  ],
+};
+
+const community = {
+  text: "Community",
+  collapsed: true,
+  items: [
+    {
+      text: "Contributing",
+      link: "/contributing",
+    },
+    {
+      text: "Security",
+      link: "/security",
+    },
+    {
+      text: "Code of Conduct",
+      link: "/code-of-conduct",
+    },
+  ],
+};
+
+const sidebar = [
+  gettingStarted,
+  coreConcepts,
+  guides,
+  examples,
+  reference,
+  internals,
+  community,
+];
+
 export default defineConfig({
   lang: "en-US",
 
   title: "Cnerium Documentation",
   description:
-    "Build fast, simple, and reliable C++ web applications with Cnerium.",
+    "Cnerium is the reliability layer for Vix backends. It attaches to vix::App and adds durable, idempotent, retry-safe routes powered by the Softadastra SDK.",
 
   base: "/",
 
@@ -38,7 +284,7 @@ export default defineConfig({
       {
         property: "og:description",
         content:
-          "Build fast, simple, and reliable C++ web applications with Cnerium.",
+          "Cnerium is the reliability layer for Vix backends. It attaches to vix::App and adds durable, idempotent, retry-safe routes powered by the Softadastra SDK.",
       },
     ],
     ["meta", { property: "og:site_name", content: "Cnerium Documentation" }],
@@ -51,7 +297,7 @@ export default defineConfig({
       {
         name: "twitter:description",
         content:
-          "Build fast, simple, and reliable C++ web applications with Cnerium.",
+          "Cnerium is the reliability layer for Vix backends. It attaches to vix::App and adds durable, idempotent, retry-safe routes powered by the Softadastra SDK.",
       },
     ],
     ["meta", { name: "twitter:image", content: "/og-image.png" }],
@@ -95,248 +341,9 @@ export default defineConfig({
 
     appearance: true,
 
-    nav: [
-      {
-        text: "Guide",
-        link: "/guide/",
-      },
-      {
-        text: "Modules",
-        link: "/modules/",
-      },
-      {
-        text: "Examples",
-        link: "/examples/",
-      },
-      {
-        text: "Reference",
-        link: "/reference/",
-      },
-      {
-        text: "Registry",
-        link: "https://registry.vixcpp.com/",
-      },
-    ],
+    nav,
 
-    sidebar: [
-      {
-        text: "Introduction",
-        collapsed: false,
-        items: [
-          {
-            text: "Home",
-            link: "/",
-          },
-          {
-            text: "What is Cnerium?",
-            link: "/what-is-cnerium",
-          },
-          {
-            text: "Installation",
-            link: "/installation",
-          },
-          {
-            text: "Quick Start",
-            link: "/quick-start",
-          },
-          {
-            text: "First App",
-            link: "/first-app",
-          },
-        ],
-      },
-
-      {
-        text: "Guide",
-        collapsed: false,
-        items: [
-          {
-            text: "Overview",
-            link: "/guide/",
-          },
-          {
-            text: "Project Structure",
-            link: "/guide/project-structure",
-          },
-          {
-            text: "Routing",
-            link: "/guide/routing",
-          },
-          {
-            text: "Route Parameters",
-            link: "/guide/route-parameters",
-          },
-          {
-            text: "Request",
-            link: "/guide/request",
-          },
-          {
-            text: "Response",
-            link: "/guide/response",
-          },
-          {
-            text: "JSON",
-            link: "/guide/json",
-          },
-          {
-            text: "Middleware",
-            link: "/guide/middleware",
-          },
-          {
-            text: "Error Handling",
-            link: "/guide/error-handling",
-          },
-          {
-            text: "Not Found",
-            link: "/guide/not-found",
-          },
-          {
-            text: "Runtime",
-            link: "/guide/runtime",
-          },
-          {
-            text: "Configuration",
-            link: "/guide/configuration",
-          },
-          {
-            text: "Printing with vix::print",
-            link: "/guide/printing",
-          },
-          {
-            text: "Deployment",
-            link: "/guide/deployment",
-          },
-        ],
-      },
-
-      {
-        text: "Modules",
-        collapsed: false,
-        items: [
-          {
-            text: "Overview",
-            link: "/modules/",
-          },
-          {
-            text: "JSON",
-            link: "/modules/json",
-          },
-          {
-            text: "HTTP",
-            link: "/modules/http",
-          },
-          {
-            text: "Router",
-            link: "/modules/router",
-          },
-          {
-            text: "Middleware",
-            link: "/modules/middleware",
-          },
-          {
-            text: "Server",
-            link: "/modules/server",
-          },
-          {
-            text: "Runtime",
-            link: "/modules/runtime",
-          },
-          {
-            text: "App",
-            link: "/modules/app",
-          },
-        ],
-      },
-
-      {
-        text: "Examples",
-        collapsed: true,
-        items: [
-          {
-            text: "Overview",
-            link: "/examples/",
-          },
-          {
-            text: "Hello World",
-            link: "/examples/hello-world",
-          },
-          {
-            text: "Basic Routes",
-            link: "/examples/basic-routes",
-          },
-          {
-            text: "JSON API",
-            link: "/examples/json-api",
-          },
-          {
-            text: "Middleware",
-            link: "/examples/middleware",
-          },
-          {
-            text: "Runtime Server",
-            link: "/examples/runtime-server",
-          },
-          {
-            text: "REST API",
-            link: "/examples/rest-api",
-          },
-        ],
-      },
-
-      {
-        text: "Reference",
-        collapsed: true,
-        items: [
-          {
-            text: "Overview",
-            link: "/reference/",
-          },
-          {
-            text: "App",
-            link: "/reference/app",
-          },
-          {
-            text: "AppContext",
-            link: "/reference/app-context",
-          },
-          {
-            text: "AppConfig",
-            link: "/reference/app-config",
-          },
-          {
-            text: "Server",
-            link: "/reference/server",
-          },
-          {
-            text: "Runtime",
-            link: "/reference/runtime",
-          },
-          {
-            text: "vix::print",
-            link: "/reference/vix-print",
-          },
-          {
-            text: "vix::console",
-            link: "/reference/vix-console",
-          },
-        ],
-      },
-
-      {
-        text: "Releases",
-        collapsed: true,
-        items: [
-          {
-            text: "Overview",
-            link: "/releases/",
-          },
-          {
-            text: "0.5.0",
-            link: "/releases/0.5.0",
-          },
-        ],
-      },
-    ],
+    sidebar,
 
     search: {
       provider: "local",
@@ -353,7 +360,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/cnerium/app",
+        link: "https://github.com/softadastra/cnerium",
       },
       {
         icon: "x",
@@ -377,7 +384,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: "https://github.com/cnerium/docs/edit/main/:path",
+      pattern: "https://github.com/softadastra/cnerium/edit/main/docs/:path",
       text: "Edit this page on GitHub",
     },
 
@@ -388,7 +395,7 @@ export default defineConfig({
 
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2026 Cnerium",
+      copyright: "Copyright © 2026 Softadastra",
     },
   },
 });
