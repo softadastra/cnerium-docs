@@ -4,7 +4,7 @@
 
 Cnerium attaches to an existing Vix backend and adds durable route behavior for critical write operations.
 
-It is designed for routes that must stay correct under retries, timeouts, lost responses, process restarts, and unstable networks.
+It is designed for routes that must stay correct under retries, timeouts, lost responses, process restarts, and unstable networks
 
 ```cpp
 #include <vix.hpp>
