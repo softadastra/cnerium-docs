@@ -1,4 +1,3 @@
-```vue
 <script setup>
 import CodeBlock from "./CodeBlock.vue";
 
@@ -139,4 +138,3 @@ function iconPath(name) {
     </a>
   </div>
 </template>
-```
